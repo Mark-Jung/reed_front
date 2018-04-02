@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { Modal, View, Text, Platform, BackHandler } from 'react-native';
 import { Spinner, Container } from 'native-base';
 import { connect } from 'react-redux';
+import { HomeComponent } from './screens';
 
 class Root extends Component {
 //   componentDidMount() {
@@ -14,7 +15,8 @@ class Root extends Component {
 //   }
     render() {
         return (
-            <Text>hello this is mark</Text>
+            <HomeComponent>
+            </HomeComponent>
         );
     }
     

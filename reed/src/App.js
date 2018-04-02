@@ -57,13 +57,16 @@ const styles = StyleSheet.create({
 */
 import React, { Component } from 'react';
 import { combineReducers, createStore} from 'redux';
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import Root from './Root';
+
+const store = createStore(App);
 
 class App extends Component {
   render() {
     return (
-      <Provider>
+      <Provider store={store}>
         <Root />
       </Provider>
     );
