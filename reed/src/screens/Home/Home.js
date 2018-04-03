@@ -12,6 +12,7 @@ import {
   StyleProvider
 } from 'native-base';
 import { View, Text, ListView, TouchableOpacity, Image, RefreshControl } from 'react-native';
+import { connect } from 'react-redux';
 
 
 // const {
@@ -26,3 +27,14 @@ class HomeComponent extends Component {
 }
 
 export { HomeComponent };
+
+const mapStateToProps = (state, ownProps) => {
+    
+    return {
+      ownProps
+    };
+  };
+
+export const Home = connect(mapStateToProps, {
+    
+  })(HomeComponent);

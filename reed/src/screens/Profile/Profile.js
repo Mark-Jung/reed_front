@@ -14,22 +14,27 @@ import {
 import { View, Text, ListView, TouchableOpacity, Image, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
 
-class PostsComponent extends Component {
+
+// const {
+
+// } = styles;
+
+
+class ProfileComponent extends Component {
     render() {
-        return <Text>hello this is Posts page</Text>
+        return <Text>hello this is profile page</Text>
     }
 }
 
-
-export { PostsComponent };
+export { ProfileComponent };
 
 const mapStateToProps = (state, ownProps) => {
     
     return {
       ownProps
     };
-  };
+};
 
-export const Posts = connect(mapStateToProps, {
+export const Profile = connect(mapStateToProps, {
     
-  })(PostsComponent);
+  })(ProfileComponent);

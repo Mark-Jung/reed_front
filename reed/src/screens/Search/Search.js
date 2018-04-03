@@ -14,22 +14,27 @@ import {
 import { View, Text, ListView, TouchableOpacity, Image, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
 
-class PostsComponent extends Component {
+
+// const {
+
+// } = styles;
+
+
+class SearchComponent extends Component {
     render() {
-        return <Text>hello this is Posts page</Text>
+        return <Text>hello this is Search page</Text>
     }
 }
 
-
-export { PostsComponent };
+export { SearchComponent };
 
 const mapStateToProps = (state, ownProps) => {
     
     return {
       ownProps
     };
-  };
+};
 
-export const Posts = connect(mapStateToProps, {
+export const Search = connect(mapStateToProps, {
     
-  })(PostsComponent);
+  })(SearchComponent);
