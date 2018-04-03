@@ -24,20 +24,31 @@ import {
 
 
 class HomeComponent extends Component {
-    render() {
-      return <Text>hello this is mark</Text>
-    }
+  
+  render() {
+    const { current_release_time, current_theme, current_theme_author, current_theme_inspire } = this.props;
+    return (
+      <Text>hello this is mark and this is the current theme: {current_theme}</Text>
+      
+    );
+
+  }
 }
 
 export { HomeComponent };
 
 const mapStateToProps = (state, ownProps) => {
-    
+  const { theme } = state;
+  const { current_release_time, current_theme, current_theme_author, current_theme_inspire, error_message } = theme;
     return {
-      ownProps
+      ownProps,
+      current_release_time,
+      current_theme,
+      current_theme_author,
+      current_theme_inspire
     };
   };
 
 export const Home = connect(mapStateToProps, {
-    
+  load_current_theme,
   })(HomeComponent);

@@ -2,7 +2,9 @@ import _ from 'lodash';
 import axios from 'axios';
 import APIConfig from '../config/api';
 
+
 const themeAPIRoot = `${APIConfig.apiRoot}/theme`;
+
 
 //Action Types
 export const LOAD_CURRENT_THEME = 'mark/theme/LOAD_CURRENT_THEME';
@@ -23,6 +25,7 @@ const INITIAL_STATE = {
 export default function reducer(state = INITIAL_STATE, action) {
     switch (action.type) {
         case LOAD_CURRENT_THEME:
+
         case LOAD_CURRENT_THEME_SUCCESS:
             return {
                 ...state,
@@ -40,8 +43,7 @@ export default function reducer(state = INITIAL_STATE, action) {
                 current_theme: '',
                 current_theme_inspire: '',
                 current_theme_author: '',
-            }   
-
+            };   
     }
 }
 
