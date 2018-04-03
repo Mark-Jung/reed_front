@@ -3,7 +3,8 @@ import { bindActionCreators } from 'redux';
 import { Modal, View, Text, Platform, BackHandler } from 'react-native';
 import { Spinner, Container } from 'native-base';
 import { connect } from 'react-redux';
-import { HomeComponent } from './screens';
+import { addNavigationHelpers, NavigationActions } from 'react-navigation';
+import { AppNavigator } from './config/route';
 
 class Root extends Component {
 //   componentDidMount() {
@@ -15,8 +16,21 @@ class Root extends Component {
 //   }
     render() {
         return (
-            <HomeComponent>
-            </HomeComponent>
+          <Container>
+          <AppNavigator
+            
+          />
+          {/* <Modal
+            animationType='fade'
+            transparent
+            visible={this.props.autoLogin.loading}
+          >
+            <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center', alignItems: 'center' }}>
+              <Spinner />
+              <Text style={{ color: '#fff' }}>로그인 중...</Text>
+            </View>
+          </Modal> */}
+        </Container>
         );
     }
     

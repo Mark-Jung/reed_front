@@ -56,12 +56,14 @@ const styles = StyleSheet.create({
 });
 */
 import React, { Component } from 'react';
-import { combineReducers, createStore} from 'redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import ReduxThunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import Root from './Root';
+import * as reducers from './ducks';
 
-const store = createStore(App);
+const rootReducer = combineReducers(reducers);
+const store = createStore(rootReducer, {}, applyMiddleware(ReduxThunk));
 
 class App extends Component {
   render() {

@@ -12,6 +12,7 @@ import {
   StyleProvider
 } from 'native-base';
 import { View, Text, ListView, TouchableOpacity, Image, RefreshControl } from 'react-native';
+import { connect } from 'react-redux';
 
 class PostsComponent extends Component {
     render() {
@@ -21,3 +22,14 @@ class PostsComponent extends Component {
 
 
 export { PostsComponent };
+
+const mapStateToProps = (state, ownProps) => {
+    
+    return {
+      ownProps
+    };
+  };
+
+export const Posts = connect(mapStateToProps, {
+    
+  })(PostsComponent);
