@@ -44,6 +44,8 @@ export default function reducer(state = INITIAL_STATE, action) {
                 current_theme_inspire: '',
                 current_theme_author: '',
             };   
+        default:
+            return state;
     }
 }
 
