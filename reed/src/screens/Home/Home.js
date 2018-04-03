@@ -13,6 +13,9 @@ import {
 } from 'native-base';
 import { View, Text, ListView, TouchableOpacity, Image, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
+import {
+  load_current_theme,
+} from '../../ducks/theme';
 
 
 // const {
@@ -22,7 +25,7 @@ import { connect } from 'react-redux';
 
 class HomeComponent extends Component {
     render() {
-        return <Text>hello this is mark</Text>
+      return <Text>hello this is mark</Text>
     }
 }
 
