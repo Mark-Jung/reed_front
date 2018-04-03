@@ -29,20 +29,20 @@ export default function reducer(state = INITIAL_STATE, action) {
         case LOAD_CURRENT_THEME_SUCCESS:
             return {
                 ...state,
-                current_release_time: action.payload.current_release_time,
-                current_theme: action.payload.current_theme,
-                current_theme_inspire: action.payload.current_theme_inspire,
-                current_theme_author: action.payload.current_theme_author,
+                current_release_time: 'hi',
+                current_theme: action.payload,
+                current_theme_inspire: 'action.payload.theme_inspire',
+                current_theme_author: 'action.payload.theme_author',
                 error_message: '',
             };
         case LOAD_CURRENT_THEME_FAILURE:
             return {
                 ...state,
-                error_message: action.payload.error_message,
                 current_release_time: '',
-                current_theme: '',
+                current_theme: 'hihi',
                 current_theme_inspire: '',
                 current_theme_author: '',
+                error_message: action.payload,
             };   
         default:
             return state;
