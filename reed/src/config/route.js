@@ -5,7 +5,9 @@ import styles from './styles';
 import icons from '../resources/img/icons';
 import {
   Home,
-  Posts
+  Posts,
+  Profile,
+  Search
 } from '../screens';
 
 const {
@@ -30,7 +32,7 @@ const MainTabRouteConfig = {
         // Note: By default the icon is only shown on iOS. Search the showIcon option below.
         tabBarIcon: ({ tintColor }) => (
           <Image
-            source={icons.search}
+            source={icons.event}
             style={[tabBarIconStyle, { tintColor }]}
           />
         ),
@@ -43,31 +45,39 @@ const MainTabRouteConfig = {
         // Note: By default the icon is only shown on iOS. Search the showIcon option below.
         tabBarIcon: ({ tintColor }) => (
           <Image
-            source={icons.event}
+            source={icons.posts}
             style={[heartIconStyle, { tintColor }]}
           />
         ),
       }
     },
-    // Profile: {
-    //   screen: Profile,
-    //   navigationOptions: {
-    //     title: 'My Profile',
-    //     tabBarLabel: 'My Account',
-    //     // Note: By default the icon is only shown on iOS. Search the showIcon option below.
-    //     tabBarIcon: ({ tintColor }) => (
-    //       <Image
-    //         source={icons.profiles}
-    //         style={{
-    //           width: Dimensions.get('window').height * 0.03,
-    //           height: Dimensions.get('window').height * 0.03,
-    //           alignSelf: 'center',
-    //           tintColor
-    //         }}
-    //       />
-    //     ),
-    //   }
-    // }
+    Profile: {
+      screen: Profile,
+      navigationOptions: {
+        title: 'My Profile',
+        tabBarLabel: 'My Account',
+        // Note: By default the icon is only shown on iOS. Search the showIcon option below.
+        tabBarIcon: ({ tintColor }) => (
+          <Image
+            source={icons.profile}
+            style={[tabBarIconStyle, { tintColor }]}
+          />
+        ),
+      }
+    },
+    Search: {
+      screen: Search,
+      navigationOptions: {
+        tabBarLabel: 'Search',
+        // Note: By default the icon is only shown on iOS. Search the showIcon option below.
+        tabBarIcon: ({ tintColor }) => (
+          <Image
+            source={icons.search}
+            style={[tabBarIconStyle, { tintColor }]}
+          />
+        ),
+      }
+    },
   };
 
 
