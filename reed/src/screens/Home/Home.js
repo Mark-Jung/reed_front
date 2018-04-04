@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  Container,
   Header,
   Item,
   Input,
@@ -13,14 +14,16 @@ import {
 } from 'native-base';
 import { View, Text, ListView, TouchableOpacity, Image, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
+import styles from './styles';
 import {
   load_current_theme,
 } from '../../ducks/theme';
 
 
-// const {
-
-// } = styles;
+const {
+  themeStyle,
+  homeContainerStyle,
+} = styles;
 
 
 class HomeComponent extends Component {
@@ -28,11 +31,12 @@ class HomeComponent extends Component {
   componentDidMount() {
     this.props.load_current_theme();
   }
-
   render() {
     const { current_release_time, current_theme, current_theme_author, current_theme_inspire, error_message } = this.props;
     return (
-      <Text>hello this is mark and this is the current theme: {current_theme}</Text>
+      <View style={homeContainerStyle}>
+        <Text style={themeStyle}>{current_theme}</Text>
+      </View>
     );
 
   }
