@@ -17,7 +17,7 @@ const INITIAL_STATE = {
     current_theme: '',
     current_theme_inspire: '',
     current_theme_author: '',
-    error_message: '',
+    theme_error_message: '',
 };
 
 
@@ -27,8 +27,8 @@ export default function reducer(state = INITIAL_STATE, action) {
         case LOAD_CURRENT_THEME:
 
         case LOAD_CURRENT_THEME_SUCCESS:
-
-            console.log(action.payload);
+            // for checking if payload is valid
+            // console.log(action.payload);
             if (typeof action.payload != "undefined") {
                 return {
                     ...state,
@@ -36,7 +36,7 @@ export default function reducer(state = INITIAL_STATE, action) {
                     current_theme: action.payload.theme,
                     current_theme_inspire: action.payload.theme_inspire,
                     current_theme_author: action.payload.theme_author,
-                    error_message: '',
+                    theme_error_message: '',
                 };
             } else {
                 return {
@@ -51,7 +51,7 @@ export default function reducer(state = INITIAL_STATE, action) {
                 current_theme: 'No available theme!',
                 current_theme_inspire: 'No available inspiration!',
                 current_theme_author: 'Contact the developer!',
-                error_message: 'Something went wrong!',
+                theme_error_message: 'Something went wrong!',
             };   
         default:
             return state;
@@ -75,8 +75,8 @@ export const load_current_theme = () => {
 }
 
 export const load_current_theme_success = (dispatch, response) => {
-    console.log('from load_current_theme_success');
-    console.log(response.data.response[0]);
+    // console.log('from load_current_theme_success');
+    // console.log(response.data.response[0]);
     dispatch({
         type: LOAD_CURRENT_THEME_SUCCESS,
         payload: response.data.response[0]
