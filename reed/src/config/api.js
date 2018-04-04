@@ -1,3 +1,5 @@
 class APIConfig {
-    static localapiRoot = 'http://165.124.144.128:5000/'
+    static localapiRoot = 'http://10.105.147.231:5000'
 }
+
+export default APIConfig;

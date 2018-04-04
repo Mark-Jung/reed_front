@@ -3,7 +3,7 @@ import axios from 'axios';
 import APIConfig from '../config/api';
 
 
-const themeAPIRoot = `${APIConfig.apiRoot}/theme`;
+const themeAPIRoot = `${APIConfig.localapiRoot}/theme`;
 
 
 //Action Types
@@ -52,16 +52,18 @@ export default function reducer(state = INITIAL_STATE, action) {
 
 //Action Creators
 export const load_current_theme = () => {
+    const url = `${themeAPIRoot}/now/1`;
+    console.log(url);
     return (dispatch) => {
         dispatch({
           type: LOAD_CURRENT_THEME
         });
-        axios.get(`${themeAPIRoot}/now/`, {
+        axios.get(url, {
             header: {'Authorization': 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjUzMjQwMjYsImlhdCI6MTUyMjczMjAyNiwic3ViIjoxfQ.gWnAJbJEUg4PTa8Fr1w7gAkt0quHYYnQK8C6AcJdMkk'}
         })
           .then((response) => load_current_theme_success(dispatch, response))
           .catch((error) => load_current_theme_failure(dispatch, error));
-      };
+    };
 }
 
 export const load_current_theme_success = (dispatch, response) => {
