@@ -40,18 +40,18 @@ export default function reducer(state = INITIAL_STATE, action) {
                 };
             } else {
                 return {
-                    state
+                    ...state
                 };
             }
             
         case LOAD_CURRENT_THEME_FAILURE:
             return {
                 ...state,
-                current_release_time: '',
-                current_theme: '',
-                current_theme_inspire: '',
-                current_theme_author: '',
-                error_message: action.payload.message,
+                current_release_time: 'Something went wrong!',
+                current_theme: 'No available theme!',
+                current_theme_inspire: 'No available inspiration!',
+                current_theme_author: 'Contact the developer!',
+                error_message: 'Something went wrong!',
             };   
         default:
             return state;
@@ -84,7 +84,6 @@ export const load_current_theme_success = (dispatch, response) => {
 }
 
 export const load_current_theme_failure = (dispatch, error) => {
-    console.log(error);
     dispatch({
         type: LOAD_CURRENT_THEME_FAILURE,
         payload: error

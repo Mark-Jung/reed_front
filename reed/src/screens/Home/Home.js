@@ -14,6 +14,7 @@ import {
 } from 'native-base';
 import { View, Text, ListView, TouchableOpacity, Image, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
+import Swiper from 'react-native-swiper';
 import styles from './styles';
 import {
   load_current_theme,
@@ -21,8 +22,12 @@ import {
 
 
 const {
+  wrapperStyle,
+  slide1Style,
   themeStyle,
-  homeContainerStyle,
+  slide2Style,
+  inspireStyle,
+  authorStyle
 } = styles;
 
 
@@ -34,9 +39,15 @@ class HomeComponent extends Component {
   render() {
     const { current_release_time, current_theme, current_theme_author, current_theme_inspire, error_message } = this.props;
     return (
-      <View style={homeContainerStyle}>
-        <Text style={themeStyle}>{current_theme}</Text>
-      </View>
+      <Swiper style={wrapperStyle} loop={false}>
+        <View style={slide1Style}>
+          <Text style={themeStyle}>{current_theme}</Text>
+        </View>
+        <View style={slide2Style}>
+          <Text style={inspireStyle}>{current_theme_inspire}</Text>
+          <Text style={authorStyle}>{current_theme_author}</Text>
+        </View>
+      </Swiper>
     );
 
   }

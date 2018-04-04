@@ -51,6 +51,19 @@ const MainTabRouteConfig = {
         ),
       }
     },
+    Search: {
+      screen: Search,
+      navigationOptions: {
+        tabBarLabel: 'Search',
+        // Note: By default the icon is only shown on iOS. Search the showIcon option below.
+        tabBarIcon: ({ tintColor }) => (
+          <Image
+            source={icons.search}
+            style={[tabBarIconStyle, { tintColor }]}
+          />
+        ),
+      }
+    },
     Profile: {
       screen: Profile,
       navigationOptions: {
@@ -60,19 +73,6 @@ const MainTabRouteConfig = {
         tabBarIcon: ({ tintColor }) => (
           <Image
             source={icons.profile}
-            style={[tabBarIconStyle, { tintColor }]}
-          />
-        ),
-      }
-    },
-    Search: {
-      screen: Search,
-      navigationOptions: {
-        tabBarLabel: 'Search',
-        // Note: By default the icon is only shown on iOS. Search the showIcon option below.
-        tabBarIcon: ({ tintColor }) => (
-          <Image
-            source={icons.search}
             style={[tabBarIconStyle, { tintColor }]}
           />
         ),
