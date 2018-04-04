@@ -27,22 +27,31 @@ export default function reducer(state = INITIAL_STATE, action) {
         case LOAD_CURRENT_THEME:
 
         case LOAD_CURRENT_THEME_SUCCESS:
-            return {
-                ...state,
-                current_release_time: 'hi',
-                current_theme: action.payload,
-                current_theme_inspire: 'action.payload.theme_inspire',
-                current_theme_author: 'action.payload.theme_author',
-                error_message: '',
-            };
+
+            console.log(action.payload);
+            if (typeof action.payload != "undefined") {
+                return {
+                    ...state,
+                    current_release_time: action.payload.release_time,
+                    current_theme: action.payload.theme,
+                    current_theme_inspire: action.payload.theme_inspire,
+                    current_theme_author: action.payload.theme_author,
+                    error_message: '',
+                };
+            } else {
+                return {
+                    state
+                };
+            }
+            
         case LOAD_CURRENT_THEME_FAILURE:
             return {
                 ...state,
                 current_release_time: '',
-                current_theme: 'hihi',
+                current_theme: '',
                 current_theme_inspire: '',
                 current_theme_author: '',
-                error_message: action.payload,
+                error_message: action.payload.message,
             };   
         default:
             return state;
@@ -53,13 +62,12 @@ export default function reducer(state = INITIAL_STATE, action) {
 //Action Creators
 export const load_current_theme = () => {
     const url = `${themeAPIRoot}/now/1`;
-    console.log(url);
     return (dispatch) => {
         dispatch({
           type: LOAD_CURRENT_THEME
         });
         axios.get(url, {
-            header: {'Authorization': 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjUzMjQwMjYsImlhdCI6MTUyMjczMjAyNiwic3ViIjoxfQ.gWnAJbJEUg4PTa8Fr1w7gAkt0quHYYnQK8C6AcJdMkk'}
+            headers: {'Authorization': 'JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjUzMjQwMjYsImlhdCI6MTUyMjczMjAyNiwic3ViIjoxfQ.gWnAJbJEUg4PTa8Fr1w7gAkt0quHYYnQK8C6AcJdMkk'}
         })
           .then((response) => load_current_theme_success(dispatch, response))
           .catch((error) => load_current_theme_failure(dispatch, error));
@@ -67,10 +75,11 @@ export const load_current_theme = () => {
 }
 
 export const load_current_theme_success = (dispatch, response) => {
-    console.log(response);
+    console.log('from load_current_theme_success');
+    console.log(response.data.response[0]);
     dispatch({
         type: LOAD_CURRENT_THEME_SUCCESS,
-        payload: response
+        payload: response.data.response[0]
     });
 }
 
