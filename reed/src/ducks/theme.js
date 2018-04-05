@@ -59,7 +59,7 @@ export default function reducer(state = INITIAL_STATE, action) {
         case LOAD_ALL_THEMES:
         case LOAD_ALL_THEMES_SUCCESS:
             if (typeof action.payload != 'undefined'){
-                console.log(action.payload)
+                // console.log(action.payload)
                 return {
                     ...state,
                     themes: action.payload,
