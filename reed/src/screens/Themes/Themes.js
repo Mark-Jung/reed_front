@@ -11,14 +11,16 @@ import {
   Row,
   StyleProvider
 } from 'native-base';
+import { NavigationActions } from 'react-navigation';
 import { View, Text, ListView, TouchableOpacity, Image, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
+
 import {
   load_all_themes,
 } from '../../ducks/theme'
 import {
-  ThemeSlider
-} from '../../components/themes';
+  Tiles
+} from '../../components/common';
 
 
 class ThemesComponent extends Component {
@@ -26,30 +28,24 @@ class ThemesComponent extends Component {
     this.props.load_all_themes(0);
   };
 
-  onThemePress () {
-    console.log('Theme pressed!');
+  onTilePress () {
+    console.log('Tile pressed!');
   }
   
   renderThemeTiles() {
     const { loaded_count, themes } = this.props;
-    let first = '';
-    typeof themes[0] === 'undefined' ? first = 'hi' : first = themes[0].theme;
+    if (themes) {
+      
+    }
+
 
     return (
-      <View style={{flex: 1, alignSelf: 'center',
-      flexDirection: 'column',
-      paddingTop: 10,
-      justifyContent: 'space-between'}}>
-        <Text>
-          how many were loaded? {loaded_count}
-        </Text>
-        
-        <Text>
-          {first}
-        </Text>
-        <ThemeSlider 
+      <View style={{flex: 1,
+        flexDirection:'row',
+      }}>
+        <Tiles 
           themes={themes} 
-          onThemePress={this.onThemePress.bind(this)} 
+          onTilePress={this.onTilePress.bind(this)} 
         />
       </View>
     );

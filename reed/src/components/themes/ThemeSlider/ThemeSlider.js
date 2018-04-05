@@ -26,6 +26,8 @@ const renderSlides = (themes, onThemePress) => {
         loop={false} 
         key={`theme+${index}`}
         showPagination={false}
+        dot={<View style={{backgroundColor:'rgba(0,0,0,0)'}}/>}
+        activeDotColor={'rgba(0,0,0,0)'}
     >
         <TouchableOpacity
             onPress={() => {

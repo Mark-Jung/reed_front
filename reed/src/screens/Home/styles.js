@@ -2,7 +2,6 @@ import { Dimensions } from 'react-native';
 
 export default {
     wrapperStyle: {
-
     },
     slide1Style: {
         flex: 1,
