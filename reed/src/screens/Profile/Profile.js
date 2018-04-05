@@ -11,6 +11,7 @@ import {
   Row,
   StyleProvider
 } from 'native-base';
+import styles from './styles';
 import { View, Text, ListView, TouchableOpacity, Image, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
 import {
@@ -18,7 +19,7 @@ import {
 } from '../../ducks/profile'
 
 // const {
-
+//   ,
 // } = styles;
 
 

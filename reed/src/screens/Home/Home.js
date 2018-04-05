@@ -12,10 +12,10 @@ import {
   Row,
   StyleProvider
 } from 'native-base';
+import styles from './styles';
 import { View, Text, ListView, TouchableOpacity, Image, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
 import Swiper from 'react-native-swiper';
-import styles from './styles';
 import {
   load_current_theme,
 } from '../../ducks/theme';

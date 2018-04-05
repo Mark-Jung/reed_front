@@ -82,8 +82,8 @@ export const load_profile = (user) => {
 }
 
 export const load_profile_success = (dispatch, response) => {
-    console.log('from load_profile_success');
-    console.log(response.data.user);
+    // console.log('from load_profile_success');
+    // console.log(response.data.user);
     dispatch({
         type: LOAD_PROFILE_SUCCESS,
         payload: response.data.user
