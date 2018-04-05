@@ -20,7 +20,6 @@ import {
   load_current_theme,
 } from '../../ducks/theme';
 
-
 const {
   wrapperStyle,
   slide1Style,
@@ -29,7 +28,6 @@ const {
   inspireStyle,
   authorStyle
 } = styles;
-
 
 class HomeComponent extends Component {
 

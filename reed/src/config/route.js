@@ -5,7 +5,7 @@ import styles from './styles';
 import icons from '../resources/img/icons';
 import {
   Home,
-  Posts,
+  Themes,
   Profile,
   Search
 } from '../screens';
@@ -38,14 +38,14 @@ const MainTabRouteConfig = {
         ),
       }
     },
-    Posts: {
-      screen: Posts,
+    Themes: {
+      screen: Themes,
       navigationOptions: {
-        tabBarLabel: 'Posts',
+        tabBarLabel: 'Themes',
         // Note: By default the icon is only shown on iOS. Search the showIcon option below.
         tabBarIcon: ({ tintColor }) => (
           <Image
-            source={icons.posts}
+            source={icons.themes}
             style={[heartIconStyle, { tintColor }]}
           />
         ),

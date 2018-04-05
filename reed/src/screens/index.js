@@ -1,4 +1,4 @@
 export * from './Home';
-export * from './Posts';
+export * from './Themes';
 export * from './Search';
 export * from './Profile';

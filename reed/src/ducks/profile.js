@@ -38,13 +38,13 @@ export default function reducer(state = INITIAL_STATE, action) {
             if (typeof action.payload != "undefined") {
                 return {
                     ...state,
-                    uid: 0,
+                    uid: action.payload.id,
                     username: action.payload.username,
-                    saved: null,
+                    saved: action.payload.saved,
                     saved_count: action.payload.saved_count,
                     followed_by_count: action.payload.followed_by_count,
-                    followed_by: null,
-                    following: null,
+                    followed_by: action.payload.followed_by,
+                    following: action.payload.following,
                     following_count: action.payload.following_count,
                     intro: action.payload.intro,
                     error_message: '',

@@ -22,9 +22,15 @@ import {
 // } = styles;
 
 
+
+
 class ProfileComponent extends Component {
   componentDidMount() {
     this.props.load_profile('mark');
+  }
+
+  renderFollowInfo(following_count, following_by_count, username, uid) {
+    
   }
 
   render() {
@@ -65,3 +71,4 @@ const mapStateToProps = (state, ownProps) => {
 export const Profile = connect(mapStateToProps, {
   load_profile,
   })(ProfileComponent);
+  
