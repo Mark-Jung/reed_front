@@ -37,10 +37,9 @@ class ThemesComponent extends Component {
     if (themes) {
       
     }
-
-
     return (
-      <View style={{flex: 1,
+      <View style={{
+        flex: 1,
         flexDirection:'row',
       }}>
         <Tiles 
@@ -57,7 +56,6 @@ class ThemesComponent extends Component {
   }
 }
 
-
 export { ThemesComponent };
 
 const mapStateToProps = (state, ownProps) => {
@@ -71,5 +69,5 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 export const Themes = connect(mapStateToProps, {
-    load_all_themes,
-  })(ThemesComponent);
+  load_all_themes,
+})(ThemesComponent);
