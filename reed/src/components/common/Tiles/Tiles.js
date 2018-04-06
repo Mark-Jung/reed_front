@@ -13,9 +13,10 @@ const {
     themeIconStyle
 } = styles;
 
-
 const renderTiles = (themes, onTilePress) => {
   return _.map(themes, (item, index) => {
+    let all_months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
     let icon = '';
     if (item.written) {
       icon = icons.sealed_mail;
@@ -24,10 +25,23 @@ const renderTiles = (themes, onTilePress) => {
     }
     let margin = width / (3 * 10);
     let size = (width) / 3;
+    let dt = new Date(item.release_time);
+    let month_num = dt.getMonth();
+    let day = dt.getDate();
+    let year = dt.getFullYear();
+    let time = dt.getHours();
+    let month = all_months[month_num];
+
+    if (time === 6) {
+        sunmoon = 'Sun';
+    }else {
+        sunmoon = 'Moon';
+    }
+
     return (
         <TouchableOpacity
             onPress={() => {
-            onTilePress();
+                onTilePress();
             }}
             style={{...slideImageStyle, width: size, height: size, marginHorizontal: 0,}}
             key={index}
@@ -35,7 +49,7 @@ const renderTiles = (themes, onTilePress) => {
             <Card>
                 <CardItem header style={{flexDirection: "row", flexWrap: "wrap"}}>
                     <Text>
-                        {item.release_time}
+                        {month}, {day}, {year}, {sunmoon}
                     </Text>
                     <RNImage source={icon} style={themeIconStyle} />
                 </CardItem>
@@ -52,7 +66,11 @@ const renderTiles = (themes, onTilePress) => {
 
 const Tiles = ({ themes, onTilePress }) => {
   return (
-    <View style={{justifyContent: "flex-start", flexDirection: "row", flexWrap: "wrap", marginTop: 30}}>
+    <View style={{
+        justifyContent: "flex-start", 
+        flexDirection: "row", 
+        flexWrap: "wrap", 
+        marginTop: 30}}>
       {renderTiles(themes, onTilePress)}
     </View>
   );

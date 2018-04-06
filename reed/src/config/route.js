@@ -51,19 +51,6 @@ const MainTabRouteConfig = {
         ),
       }
     },
-    Search: {
-      screen: Search,
-      navigationOptions: {
-        tabBarLabel: 'Search',
-        // Note: By default the icon is only shown on iOS. Search the showIcon option below.
-        tabBarIcon: ({ tintColor }) => (
-          <Image
-            source={icons.search}
-            style={[tabBarIconStyle, { tintColor }]}
-          />
-        ),
-      }
-    },
     Profile: {
       screen: Profile,
       navigationOptions: {
@@ -80,7 +67,6 @@ const MainTabRouteConfig = {
     },
   };
 
-
   const TabNavigatorConfigs = {
     swipeEnabled: false,
     tabBarComponent: TabBarBottom,
@@ -92,9 +78,7 @@ const MainTabRouteConfig = {
     lazy: true
   };
 
-
   const MainTabNavigator = TabNavigator(MainTabRouteConfig, TabNavigatorConfigs);
-
 
   const AppRouteConfigs = {
     MainTabs: {
@@ -108,7 +92,6 @@ const MainTabRouteConfig = {
     // }
   };
 
-
   const AppNavigator = StackNavigator(
     AppRouteConfigs,
     {
@@ -116,7 +99,6 @@ const MainTabRouteConfig = {
     }
   );
   
-
   AppNavigator.router.getStateForAction = navigateOnce(AppNavigator.router.getStateForAction);
   
   export { AppNavigator };

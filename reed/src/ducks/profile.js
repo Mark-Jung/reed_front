@@ -8,9 +8,9 @@ const jwt_demo = APIConfig.jwt_demo;
 
 
 //Action Types
-export const LOAD_PROFILE = 'mark/profile/LOAD_PROFILE';
-export const LOAD_PROFILE_SUCCESS = 'mark/profile/LOAD_PROFILE_SUCCESS';
-export const LOAD_PROFILE_FAILURE = 'mark/profile/LOAD_PROFILE_FAILURE';
+export const LOAD_PROFILE = 'reed/profile/LOAD_PROFILE';
+export const LOAD_PROFILE_SUCCESS = 'reed/profile/LOAD_PROFILE_SUCCESS';
+export const LOAD_PROFILE_FAILURE = 'reed/profile/LOAD_PROFILE_FAILURE';
 
 
 const INITIAL_STATE = {

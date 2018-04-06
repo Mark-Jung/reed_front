@@ -8,12 +8,12 @@ const jwt_demo = APIConfig.jwt_demo;
 
 
 //Action Types
-export const LOAD_CURRENT_THEME = 'mark/theme/LOAD_CURRENT_THEME';
-export const LOAD_CURRENT_THEME_FAILURE = 'mark/theme/LOAD_CURRENT_THEME_FAILURE';
-export const LOAD_CURRENT_THEME_SUCCESS = 'mark/theme/LOAD_CURRENT_THEME_SUCCESS';
-export const LOAD_ALL_THEMES = 'mark/theme/LOAD_ALL_THEMES';
-export const LOAD_ALL_THEMES_SUCCESS = 'mark/theme/LOAD_ALL_THEMES_SUCCESS';
-export const LOAD_ALL_THEMES_FAILURE = 'mark/theme/LOAD_ALL_THEMES_FAILURE';
+export const LOAD_CURRENT_THEME = 'reed/theme/LOAD_CURRENT_THEME';
+export const LOAD_CURRENT_THEME_FAILURE = 'reed/theme/LOAD_CURRENT_THEME_FAILURE';
+export const LOAD_CURRENT_THEME_SUCCESS = 'reed/theme/LOAD_CURRENT_THEME_SUCCESS';
+export const LOAD_ALL_THEMES = 'reed/theme/LOAD_ALL_THEMES';
+export const LOAD_ALL_THEMES_SUCCESS = 'reed/theme/LOAD_ALL_THEMES_SUCCESS';
+export const LOAD_ALL_THEMES_FAILURE = 'reed/theme/LOAD_ALL_THEMES_FAILURE';
 
 
 const INITIAL_STATE = {
