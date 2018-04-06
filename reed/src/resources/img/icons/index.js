@@ -4,5 +4,6 @@ export default {
     themes: require('./themes.png'),
     profile: require('./profile.png'),
     open_mail: require('./open_mail.png'),
-    sealed_mail: require('./sealed_mail.png')
+    sealed_mail: require('./sealed_mail.png'),
+    closed_mail: require('./closed_mail.png'),
 };
