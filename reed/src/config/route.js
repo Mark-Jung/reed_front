@@ -7,7 +7,9 @@ import {
   Home,
   Themes,
   Profile,
-  Search
+  Search,
+  Write,
+  Collection
 } from '../screens';
 
 const {
@@ -84,6 +86,13 @@ const MainTabRouteConfig = {
     MainTabs: {
       screen: MainTabNavigator
     },
+    Write: {
+      screen: Write
+    },
+    Collection: {
+      screen: Collection
+    },
+
     // Login: {
     //   screen: Login,
     //   navigationOptions: {

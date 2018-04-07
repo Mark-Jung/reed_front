@@ -33,8 +33,14 @@ class ThemesComponent extends Component {
     this.props.toggle_show_open();
   };
 
-  onTilePress () {
-    console.log('Tile pressed!');
+  onTilePress (theme) {
+    console.log(theme);
+    this.props.navigation.dispatch(NavigationActions.navigate({
+      routeName: 'Collection',
+      params: {
+        theme
+      }
+    }));
   };
   
   renderThemeTiles () {
