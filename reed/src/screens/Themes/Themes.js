@@ -18,6 +18,8 @@ import { connect } from 'react-redux';
 import icons from '../../resources/img/icons';
 import {
   load_all_themes,
+  toggle_show_closed,
+  toggle_show_open
 } from '../../ducks/theme'
 import {
   Tiles
@@ -27,26 +29,17 @@ import {
 class ThemesComponent extends Component {
   componentDidMount() {
     this.props.load_all_themes(0);
+    this.props.toggle_show_closed();
+    this.props.toggle_show_open();
   };
 
   onTilePress () {
     console.log('Tile pressed!');
   };
-  onClosedPress () {
-    console.log('hi');
-    
-  };
-  onOpenPress() {
-    console.log('bye');
-  }
   
   renderThemeTiles () {
-    
-    const { loaded_count, themes } = this.props;
+    const { loaded_count, themes, show_closed, show_open } = this.props;
     let sorted_themes = [];
-    let show_closed = true;
-    let show_open = true;
-
     if (themes) {
       sorted_themes = themes
     }
@@ -56,26 +49,19 @@ class ThemesComponent extends Component {
       }}>
         <View style={{flexDirection: 'row',}}>
           <Button
-            onPress={this.onClosedPress}
-            style={show_closed ? {backgroundColor: 'grey'} : {backgroundColor: 'grey', opacity: 0.4}}
+            onPress={this.props.toggle_show_closed}
+            style={show_closed ? {backgroundColor: 'green', opacity: 0.4} : {backgroundColor: 'green'} }
           >
-            <Image source={icons.closed_mail}/>
+            <Image source={icons.closed_mail} style={{width:50, height: 50}}/>
           </Button>
           <Button
-            onPress={this.onOpenPress}
-            style={show_open ? {backgroundColor: 'grey'} : {backgroundColor: 'grey', opacity: 0.4}}
+            onPress={this.props.toggle_show_open}
+            style={show_open ?  {backgroundColor: 'green', opacity: 0.4} : {backgroundColor: 'green'}}
           >
-            <Image source={icons.open_mail}/>
+            <Image source={icons.open_mail} style={{width:50, height: 50}}/>
           </Button>
         </View>
         
-        {/* <TouchableHighlight
-          activeOpacity={1}
-          style={ this.state.pressStatus ? styles.buttonPress : styles.button }
-          onPress={this.onFilterPress.bind(this)}
-        >
-          <Image source={icons.closed_mail}/>
-        </TouchableHighlight> */}
         <Tiles 
           themes={sorted_themes} 
           onTilePress={this.onTilePress.bind(this)} 
@@ -94,14 +80,18 @@ export { ThemesComponent };
 
 const mapStateToProps = (state, ownProps) => {
   const { theme } = state;
-  const { themes, loaded_count } = theme;
+  const { themes, loaded_count, show_closed, show_open } = theme;
   return {
     ...ownProps,
     themes,
-    loaded_count
+    loaded_count,
+    show_closed,
+    show_open,
   };
 };
 
 export const Themes = connect(mapStateToProps, {
   load_all_themes,
+  toggle_show_closed,
+  toggle_show_open
 })(ThemesComponent);

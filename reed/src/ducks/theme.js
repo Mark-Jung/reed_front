@@ -14,6 +14,9 @@ export const LOAD_CURRENT_THEME_SUCCESS = 'reed/theme/LOAD_CURRENT_THEME_SUCCESS
 export const LOAD_ALL_THEMES = 'reed/theme/LOAD_ALL_THEMES';
 export const LOAD_ALL_THEMES_SUCCESS = 'reed/theme/LOAD_ALL_THEMES_SUCCESS';
 export const LOAD_ALL_THEMES_FAILURE = 'reed/theme/LOAD_ALL_THEMES_FAILURE';
+export const SORT_THEMES = 'reed/theme/SORT_THEMES';
+export const TOGGLE_SHOW_CLOSED = 'reed/theme/TOGGLE_SHOW_CLOSED';
+export const TOGGLE_SHOW_OPEN = 'reed/theme/TOGGLE_SHOW_OPEN';
 
 
 const INITIAL_STATE = {
@@ -24,6 +27,8 @@ const INITIAL_STATE = {
     theme_error_message: '',
     themes: [],
     loaded_count: 0,
+    show_closed: false,
+    show_open: false,
 };
 
 
@@ -73,6 +78,21 @@ export default function reducer(state = INITIAL_STATE, action) {
         case LOAD_ALL_THEMES_FAILURE:
             return {
                 ...state,
+            }
+        case TOGGLE_SHOW_CLOSED:
+            console.log(!state.show_closed);
+
+            return {
+                ...state,
+                show_closed: !state.show_closed,
+                // need to add filtering script
+            }
+        case TOGGLE_SHOW_OPEN:
+            console.log(!state.show_open);
+            return {
+                ...state,
+                show_open: !state.show_open,
+                // need to add filtering script
             }
         default:
             return state;
@@ -141,5 +161,21 @@ export const load_all_themes_failure = (dispatch, error) => {
         type: LOAD_ALL_THEMES_FAILURE,
         payload: error
     });
+}
+
+export const toggle_show_closed = () => {
+    return (dispatch) => {
+        dispatch({
+            type: TOGGLE_SHOW_CLOSED,
+        })
+    }
+}
+
+export const toggle_show_open = () => {
+    return (dispatch) => {
+        dispatch({
+            type: TOGGLE_SHOW_OPEN,
+        })
+    }
 }
 
