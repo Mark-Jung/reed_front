@@ -1,54 +1,42 @@
 import { Dimensions } from 'react-native';
 
 export default {
+    followInfoStyle: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: Dimensions.get('window').width * 0.5,
+    },
+
+    followNumberStyle: {
+        textAlign: 'center',
+    },
+
     followButtonStyle: {
-        backgroundColor: '#E5E5E5',
-        flex: 1,
-        flexDirection: 'column',
-
+        height: 30,
+        backgroundColor: 'grey',
+        borderRadius: 35,
     },
 
-    followTextStyle: {
-        fontWeight: '200',
-        fontSize: 15,
-        color: 'black',
-        alignSelf: 'center',
+    nameContainerStyle: {
+        width: Dimensions.get('window').width * 0.5,
     },
 
-    wrapperStyle: {
-
-    },
-    slide1Style: {
-        flex: 1,
-        flexDirection: 'column',
+    nameStyle: {
+        borderRadius: 40, 
+        backgroundColor: 'grey',
+        width: 80,
+        height: 80,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#C5DACC'
-    },
-    themeStyle: {
-        fontWeight: '400',
-        fontSize: 24,
-        color: '#C5DACC',
-        alignSelf: 'center',
-    },
-    slide2Style: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'steelblue'
-    },
-    inspireStyle: {
-        fontWeight: '400',
-        fontSize: 24,
-        color: 'white',
-        alignSelf: 'center',
-    },
-    authorStyle: {
-        fontWeight: '400',
-        fontSize: 24,
-        color: 'white',
-        alignSelf: 'center',
+        marginLeft: 30,
     },
 
+    upperStyle: {
+        flexDirection: 'row',
+        backgroundColor: '#C5DACC',
+        justifyContent: 'space-between',
+    }
+
+    
 };

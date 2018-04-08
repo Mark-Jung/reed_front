@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {
   Header,
+  Left,
+  Right,
   Item,
   Input,
   Icon,
@@ -11,8 +13,13 @@ import {
   Row,
   StyleProvider
 } from 'native-base';
+import { NavigationActions } from 'react-navigation';
 import { View, Text, ListView, TouchableOpacity, Image, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
+
+import {
+  post_publish,
+} from '../../ducks/post';
 
 
 // const {
@@ -33,16 +40,32 @@ class WriteComponent extends Component {
                       headerProps.navigation.dispatch(NavigationActions.back());
                     }}
                   >
-                    <Icon style={styles.headerButtonsIconStyle} name='arrow-back' />
+                    <Icon style={{}} name='arrow-back' />
                   </Button>
                 </Left>
+                <Right>
+                  <Button
+                    transparent
+                    // onPress={() => {
+                    //   this.props.
+                    // }}
+                  >
+                    <Text>
+                      Publish
+                    </Text>
+                  </Button>
+                </Right>
               </Header>
             );
           }
         };
     }
     render() {
-        return <Text>hello this is Search page</Text>
+        return (
+          <Text>
+            Hello this is the write page.
+          </Text>
+        );
     }
 }
 
@@ -51,7 +74,8 @@ export { WriteComponent };
 const mapStateToProps = (state, ownProps) => {
     
     return {
-      ownProps
+      ...ownProps,
+
     };
 };
 

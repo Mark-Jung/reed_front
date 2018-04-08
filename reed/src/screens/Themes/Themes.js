@@ -34,7 +34,6 @@ class ThemesComponent extends Component {
   };
 
   onTilePress (theme) {
-    console.log(theme);
     this.props.navigation.dispatch(NavigationActions.navigate({
       routeName: 'Collection',
       params: {

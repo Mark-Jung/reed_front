@@ -9,21 +9,39 @@ import {
   Grid,
   Col,
   Row,
-  StyleProvider
+  StyleProvider,
+  Fab
 } from 'native-base';
+import { NavigationActions } from 'react-navigation';
 import { View, Text, ListView, TouchableOpacity, Image, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
-
 
 // const {
 
 // } = styles;
 
-
 class CollectionComponent extends Component {
     render() {
       const { theme } = this.props.navigation.state.params;
-      return <Text>{theme}</Text>
+      
+      return (
+        <Fab
+            active={true}
+            direction="up"
+            containerStyle={{ }}
+            style={{ backgroundColor: '#5067FF' }}
+            position="bottomRight"
+            onPress={() => {
+              this.props.navigation.dispatch(NavigationActions.navigate({
+                routeName: 'Write',
+                params: {
+                  theme
+                }
+              }));
+            }}>
+            <Icon name="share" />
+          </Fab>
+      );
     }
 }
 
