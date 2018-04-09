@@ -15,44 +15,90 @@ import {
 import { NavigationActions } from 'react-navigation';
 import { View, Text, ListView, TouchableOpacity, Image, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
+import {
+  load_post,
+} from '../../ducks/post';
 
 // const {
 
 // } = styles;
 
 class CollectionComponent extends Component {
-    render() {
-      const { theme } = this.props.navigation.state.params;
-      
+
+  componentDidMount() {
+    const { theme } = this.props.navigation.state.params;
+    this.props.load_post(theme);
+  }
+
+  renderPost(post) {
+    if(post) {
       return (
-        <Fab
-            active={true}
-            direction="up"
-            containerStyle={{ }}
-            style={{ backgroundColor: '#5067FF' }}
-            position="bottomRight"
-            onPress={() => {
-              this.props.navigation.dispatch(NavigationActions.navigate({
-                routeName: 'Write',
-                params: {
-                  theme
-                }
-              }));
-            }}>
-            <Icon name="share" />
-          </Fab>
+        <View>
+          <Text>
+            {post[0].anonymity}
+          </Text>
+          <Text>
+            {post[0].content}
+          </Text>
+        </View>
+      );
+    } else {
+      return (
+        <Text>
+          loading
+        </Text>
       );
     }
+    
+  }
+
+  renderCollection(theme, posts) {
+    return (
+      <ListView>
+      </ListView>
+    )
+  }
+  
+  render() {
+    const { theme, postList } = this.props.navigation.state.params;
+
+
+    return (
+      <View style={{flex:1}}>
+        {this.renderPost(postList)}
+        <Fab
+          active={true}
+          direction="up"
+          containerStyle={{ }}
+          style={{ backgroundColor: '#5067FF' }}
+          position="bottomRight"
+          onPress={() => {
+            this.props.navigation.dispatch(NavigationActions.navigate({
+              routeName: 'Write',
+              params: {
+                theme
+              }
+            }));
+          }}>
+          <Icon name="share" />
+        </Fab>
+      </View>
+    );
+  }
 }
 
 export { CollectionComponent };
 
 const mapStateToProps = (state, ownProps) => {
-    return {
-      ...ownProps,
-    };
+  const { post } = state;
+  const { postList } = post;
+  // console.log(postList);
+  return {
+    ...ownProps,
+    postList,
+  };
 };
 
 export const Collection = connect(mapStateToProps, {
-    
-  })(CollectionComponent);
+  load_post,   
+})(CollectionComponent);

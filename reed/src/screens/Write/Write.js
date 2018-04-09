@@ -61,11 +61,12 @@ class WriteComponent extends Component {
         };
     }
     render() {
-        return (
-          <Text>
-            Hello this is the write page.
-          </Text>
-        );
+      const { theme } = this.props.navigation.state.params;
+      return (
+        <Text>
+          This write page will send post about {theme}
+        </Text>
+      );
     }
 }
 
