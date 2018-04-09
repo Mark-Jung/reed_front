@@ -8,12 +8,12 @@ export default {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'steelblue'
+        backgroundColor: '#C5DACC'
     },
     themeStyle: {
         fontWeight: '400',
         fontSize: 24,
-        color: '#C5DACC',
+        color: 'black',
         alignSelf: 'center',
     },
     slide2Style: {
@@ -21,18 +21,18 @@ export default {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'steelblue'
+        backgroundColor: '#C5DACC'
     },
     inspireStyle: {
         fontWeight: '400',
         fontSize: 24,
-        color: '#C5DACC',
+        color: 'black',
         alignSelf: 'center',
     },
     authorStyle: {
         fontWeight: '400',
         fontSize: 24,
-        color: '#C5DACC',
+        color: 'black',
         alignSelf: 'center',
     },
 

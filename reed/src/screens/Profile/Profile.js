@@ -9,7 +9,10 @@ import {
   Grid,
   Col,
   Row,
-  StyleProvider
+  StyleProvider,
+  Tab,
+  Tabs,
+  TabHeading,
 } from 'native-base';
 import styles from './styles';
 import { View, Text, ListView, TouchableOpacity, Image, RefreshControl } from 'react-native';
@@ -33,6 +36,28 @@ const {
 class ProfileComponent extends Component {
   componentDidMount() {
     this.props.load_profile('mark');
+  }
+
+  renderTabs() {
+    return (
+      <Tabs initialPage={0} tabBarUnderlineStyle={{backgroundColor: 'grey'}}>
+          <Tab heading={ <TabHeading><Icon name="apps" /></TabHeading>} style={{color: 'grey'}}>
+            <Text>
+              tileview
+            </Text>
+          </Tab>
+          <Tab heading="Tab2">
+            <Text>
+              ahung2
+            </Text>
+          </Tab>
+          <Tab heading={<TabHeading> <Icon name="bookmarks" style={{color: 'white'}}/> </TabHeading>}>
+            <Text>
+              bookmarked
+            </Text>
+          </Tab>
+        </Tabs>
+    );
   }
 
   renderFollowInfo(following_count, followed_by_count, username, uid) {
@@ -122,11 +147,7 @@ class ProfileComponent extends Component {
         </View>
         {this.renderIntro(username, intro)}
 
-        <View>
-          <Text>
-            Tab sections
-          </Text>
-        </View>
+        {this.renderTabs()}
 
       </View>
     );
