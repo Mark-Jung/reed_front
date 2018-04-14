@@ -4,7 +4,6 @@ import {
   Left,
   Right,
   Item,
-  Input,
   Icon,
   Button,
   Spinner,
@@ -14,11 +13,13 @@ import {
   StyleProvider
 } from 'native-base';
 import { NavigationActions } from 'react-navigation';
-import { View, Text, ListView, TouchableOpacity, Image, RefreshControl } from 'react-native';
+import { View, Text, ListView, TextInput, Image, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
-
+import _ from 'lodash'; 
+import { Input } from '../../components/common/Input';
 import {
   post_publish,
+  temp_save,
 } from '../../ducks/post';
 
 
@@ -60,12 +61,20 @@ class WriteComponent extends Component {
           }
         };
     }
+    
     render() {
       const { theme } = this.props.navigation.state.params;
+      const { draft } = this.props;
+      var cur_draft = '';
+      if (!_.isEmpty(draft)) {
+        var cur_draft_obj = (_.find(draft, function(obj) {return obj.theme === theme;}));
+        cur_draft = typeof cur_draft_obj != 'undefined' ? cur_draft_obj.text : '';
+      }
       return (
-        <Text>
-          This write page will send post about {theme}
-        </Text>
+        <Input 
+          onChangeText={(cur_draft) => this.props.temp_save(cur_draft, theme)}
+          value={cur_draft}
+        />
       );
     }
 }
@@ -73,13 +82,15 @@ class WriteComponent extends Component {
 export { WriteComponent };
 
 const mapStateToProps = (state, ownProps) => {
+  const { post } = state;
+  const { draft } = post;
     
-    return {
-      ...ownProps,
-
-    };
+  return {
+    ...ownProps,
+    draft,
+  };
 };
 
 export const Write = connect(mapStateToProps, {
-    
-  })(WriteComponent);
+  temp_save,
+})(WriteComponent);

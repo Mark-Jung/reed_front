@@ -11,11 +11,16 @@ const jwt_demo = APIConfig.jwt_demo;
 export const LOAD_POST = 'reed/post/LOAD_POST';
 export const LOAD_POST_FAILURE = 'reed/post/LOAD_POST_FAILURE';
 export const LOAD_POST_SUCCESS = 'reed/post/LOAD_POST_SUCCESS';
+export const SEND_POST = 'reed/post/SEND_POST';
+export const SEND_POST_FAILURE = 'reed/post/SEND_POST_FAILURE';
+export const SEND_POST_SUCCESS= 'reed/post/SEND_POST_SUCCESS';
+export const TEMP_SAVE = 'reed/post/TEMP_SAVE';
 
-const INITIAL_STATE = {
+const INITIAL_STATE = { 
     postList: [],
+    draft: [],
     error_message: '',
-};
+}; 
 
 //Reducers
 export default function reducer(state = INITIAL_STATE, action) {
@@ -38,6 +43,14 @@ export default function reducer(state = INITIAL_STATE, action) {
                 current_theme_author: 'Contact the developer!',
                 theme_error_message: 'Something went wrong!',
             };   
+        
+        case TEMP_SAVE:
+            var old_draft = state.draft;
+            old_draft.push(action.payload);
+            return {
+                ...state,
+                draft: old_draft,
+            }
         
         default:
             return state;
@@ -74,4 +87,13 @@ export const load_post_failure = (dispatch, error) => {
         type: LOAD_POST_FAILURE,
         payload: error
     });
+}
+
+export const temp_save = (text, theme) => {
+    return (dispatch) => {
+        dispatch({
+            type: TEMP_SAVE,
+            payload: {'text': text, 'theme': theme}
+        });
+    };
 }
