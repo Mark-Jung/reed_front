@@ -68,4 +68,4 @@ const mapStateToProps = (state, ownProps) => {
 
 export const Home = connect(mapStateToProps, {
   load_current_theme,
-  })(HomeComponent);
+})(HomeComponent);

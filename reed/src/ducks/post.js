@@ -23,16 +23,12 @@ export default function reducer(state = INITIAL_STATE, action) {
         case LOAD_POST:
 
         case LOAD_POST_SUCCESS:
-            if (typeof action.payload != "undefined") {
-                return {
-                    ...state,
-                    postList: action.payload.postList
-                };
-            } else {
-                return {
-                    ...state
-                };
-            }
+            
+            return {
+                ...state,
+                postList: action.payload
+            };
+        
         case LOAD_POST_FAILURE:
             return {
                 ...state,

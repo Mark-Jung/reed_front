@@ -41,7 +41,7 @@ class ProfileComponent extends Component {
   renderTabs() {
     return (
       <Tabs initialPage={0} tabBarUnderlineStyle={{backgroundColor: 'grey'}}>
-          <Tab heading={ <TabHeading><Icon name="apps" /></TabHeading>} style={{color: 'grey'}}>
+          <Tab heading={ <TabHeading><Icon name="apps" /></TabHeading>}>
             <Text>
               tileview
             </Text>
@@ -139,7 +139,6 @@ class ProfileComponent extends Component {
       <View
         style={{backgroundColor: '#C5DACC', flex: 1}}
       >
-  
         <View
           style={upperStyle}
         >

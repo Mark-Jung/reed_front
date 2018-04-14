@@ -10,18 +10,22 @@ import {
   Col,
   Row,
   StyleProvider,
-  Fab
+  Fab,
+  Card,
+  CardItem,
 } from 'native-base';
 import { NavigationActions } from 'react-navigation';
-import { View, Text, ListView, TouchableOpacity, Image, RefreshControl } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Image, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
+import _ from 'lodash';
+import styles from './styles';
 import {
   load_post,
 } from '../../ducks/post';
 
-// const {
-
-// } = styles;
+const {
+  cardImageStyle,
+} = styles;
 
 class CollectionComponent extends Component {
 
@@ -30,42 +34,78 @@ class CollectionComponent extends Component {
     this.props.load_post(theme);
   }
 
-  renderPost(post) {
-    if(post) {
+  renderPost() {
+    const { postList } = this.props;
+    if (!_.isEmpty(postList)) {
+      return _.map(postList, (post, index) => {
+        return (
+          <Card
+            key={index}
+            style={cardImageStyle}
+          >
+            <CardItem
+              Header
+            >
+              <Icon/>
+            </CardItem>
+            <CardItem>
+              <Text>
+                {post.content}
+              </Text>
+            </CardItem>
+          </Card>
+        );
+      }); 
+    }
+    else {
       return (
         <View>
           <Text>
-            {post[0].anonymity}
-          </Text>
-          <Text>
-            {post[0].content}
+            loading
           </Text>
         </View>
       );
-    } else {
-      return (
-        <Text>
-          loading
-        </Text>
-      );
-    }
-    
+    };
   }
+    
 
-  renderCollection(theme, posts) {
+  renderCollection() {
+    const { current_theme, current_theme_inspire, current_theme_author } = this.props
     return (
-      <ListView>
-      </ListView>
+      <ScrollView>
+        <Card
+            style={cardImageStyle}
+          >
+            <CardItem
+              Header
+            >
+              <Icon/>
+              <Text>
+                {current_theme}
+              </Text>
+            </CardItem>
+            <CardItem>
+              <Text>
+                {current_theme_inspire}
+              </Text>
+              <Text>
+                {current_theme_author}
+              </Text>
+            </CardItem>
+          </Card>
+        {this.renderPost()}
+      </ScrollView>
     )
   }
   
   render() {
-    const { theme, postList } = this.props.navigation.state.params;
-
+    const { theme } = this.props.navigation.state.params;
+    const { postList } = this.props;
+    // console.log(postList)
 
     return (
       <View style={{flex:1}}>
-        {this.renderPost(postList)}
+        {this.renderCollection()}
         <Fab
           active={true}
           direction="up"
@@ -80,7 +120,7 @@ class CollectionComponent extends Component {
               }
             }));
           }}>
-          <Icon name="share" />
+          <Icon name="share"/>
         </Fab>
       </View>
     );
@@ -90,12 +130,16 @@ class CollectionComponent extends Component {
 export { CollectionComponent };
 
 const mapStateToProps = (state, ownProps) => {
-  const { post } = state;
+  const { post, theme } = state;
   const { postList } = post;
+  const { current_theme, current_theme_inspire, current_theme_author } = theme;
   // console.log(postList);
   return {
     ...ownProps,
     postList,
+    current_theme,
+    current_theme_author,
+    current_theme_inspire,
   };
 };
 

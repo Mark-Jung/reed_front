@@ -18,7 +18,6 @@ const renderSorts = () => {
         <Text>
             wowowowowowowow1
         </Text>
-        
     );
 };
 

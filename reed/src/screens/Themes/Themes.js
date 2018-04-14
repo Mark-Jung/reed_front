@@ -12,7 +12,7 @@ import {
   StyleProvider
 } from 'native-base';
 import { NavigationActions } from 'react-navigation';
-import { View, Text, ListView, TouchableHighlight, Image, RefreshControl, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, TouchableHighlight, Image, RefreshControl, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
 import icons from '../../resources/img/icons';
@@ -48,6 +48,7 @@ class ThemesComponent extends Component {
     if (themes) {
       sorted_themes = themes
     }
+    console.log(sorted_themes);
     return (
       <View style={{
         
@@ -66,11 +67,12 @@ class ThemesComponent extends Component {
             <Image source={icons.open_mail} style={{width:50, height: 50}}/>
           </Button>
         </View>
-        
-        <Tiles 
-          themes={sorted_themes} 
-          onTilePress={this.onTilePress.bind(this)} 
-        />
+        <ScrollView>
+          <Tiles 
+            themes={sorted_themes} 
+            onTilePress={this.onTilePress.bind(this)} 
+          />
+        </ScrollView>
       </View>
     );
   }
