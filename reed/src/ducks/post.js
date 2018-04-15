@@ -46,7 +46,12 @@ export default function reducer(state = INITIAL_STATE, action) {
         
         case TEMP_SAVE:
             var old_draft = state.draft;
-            old_draft.push(action.payload);
+            var old_index = _.findIndex(old_draft, function(obj) {return obj.theme === action.payload.theme});
+            if ( old_index >= 0){
+                old_draft[old_index].text = action.payload.text;
+            } else {
+                old_draft.push(action.payload);
+            }
             return {
                 ...state,
                 draft: old_draft,
@@ -90,6 +95,8 @@ export const load_post_failure = (dispatch, error) => {
 }
 
 export const temp_save = (text, theme) => {
+    // console.log("text change detected!");
+    // console.log("The text that will be saved is " + text);
     return (dispatch) => {
         dispatch({
             type: TEMP_SAVE,

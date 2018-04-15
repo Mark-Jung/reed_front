@@ -69,6 +69,7 @@ class WriteComponent extends Component {
       if (!_.isEmpty(draft)) {
         var cur_draft_obj = (_.find(draft, function(obj) {return obj.theme === theme;}));
         cur_draft = typeof cur_draft_obj != 'undefined' ? cur_draft_obj.text : '';
+        // console.log(cur_draft);
       }
       return (
         <Input 
