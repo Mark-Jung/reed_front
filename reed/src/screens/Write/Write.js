@@ -13,7 +13,7 @@ import {
   StyleProvider
 } from 'native-base';
 import { NavigationActions } from 'react-navigation';
-import { View, Text, ListView, TextInput, Image, RefreshControl } from 'react-native';
+import { View, Text, ListView, TextInput, Image, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash'; 
 import { Input } from '../../components/common/Input';
@@ -72,6 +72,18 @@ class WriteComponent extends Component {
               transparent
               onPress={() => {
                 this.props.send_post(cur_draft, theme);
+                const resetAction = NavigationActions.reset({
+                  index: 0,
+                  actions: [
+                    NavigationActions.navigate({ routeName: 'MainTabs' }),
+                  ],
+                });
+                Alert.alert("Message", "Successfully Posted!", [{text: 'OK', onPress: () => {this.props.navigation.dispatch(resetAction)}}], { cancelable: false });
+                
+                
+                // this.props.navigation.dispatch(NavigationActions.navigate({
+                //   routeName: 'Home',
+                // }));
               }}
             >
               <Text>
