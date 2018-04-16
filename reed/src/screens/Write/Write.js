@@ -55,23 +55,23 @@ class WriteComponent extends Component {
     render() {
       const { theme } = this.props.navigation.state.params;
       const { draft } = this.props;
-      var cur_draft = '';
-      if (!_.isEmpty(draft)) {
+      var { cur_draft } = this.props;
+      if (!_.isEmpty(draft) || cur_draft === '') {
         var cur_draft_obj = (_.find(draft, function(obj) {return obj.theme === theme;}));
         cur_draft = typeof cur_draft_obj != 'undefined' ? cur_draft_obj.text : '';
-        // console.log(cur_draft);
-      }
+        // console.log("This is from extracting cur_draft: " + cur_draft);
+      } 
       return (
         <View>
           <Input 
-            onChangeText={(cur_draft) => this.props.temp_save(cur_draft, theme)}
+            onChangeText={(cur_draft) => {this.props.temp_save(cur_draft, theme);}}
             value={cur_draft}
           />
           <Right>
             <Button
               transparent
               onPress={() => {
-                this.props.send_post(cur_draft, theme)
+                this.props.send_post(cur_draft, theme);
               }}
             >
               <Text>
@@ -89,11 +89,12 @@ export { WriteComponent };
 
 const mapStateToProps = (state, ownProps) => {
   const { post } = state;
-  const { draft } = post;
+  const { draft, cur_draft } = post;
     
   return {
     ...ownProps,
     draft,
+    cur_draft
   };
 };
 

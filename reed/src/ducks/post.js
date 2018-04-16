@@ -20,6 +20,7 @@ const INITIAL_STATE = {
     postList: [],
     draft: [],
     error_message: '',
+    cur_draft: '',
 }; 
 
 //Reducers
@@ -51,6 +52,7 @@ export default function reducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 draft: old_draft,
+                cur_draft: action.payload.text,
             }
         
         case SEND_POST:
@@ -62,10 +64,13 @@ export default function reducer(state = INITIAL_STATE, action) {
             }
         
         case SEND_POST_SUCCESS:
-        default:
             return {
                 ...state,
                 error_message: ''
+            }
+        default:
+            return {
+                ...state,
             }
     }
 }
@@ -120,7 +125,7 @@ export const send_post = (content, theme) => {
 }
 
 export const send_post_success = (disptach, response) => {
-    console.log(response.data)
+    console.log(response.data);
     dispatch({
         type: SEND_POST_SUCCESS,
         payload: response
