@@ -42,13 +42,18 @@ class ThemesComponent extends Component {
     }));
   };
   
+  
   renderThemeTiles () {
-    const { loaded_count, themes, show_closed, show_open } = this.props;
-    let sorted_themes = [];
-    if (themes) {
-      sorted_themes = themes
+    const { loaded_count, themes, show_closed, show_open, closed_themes, open_themes } = this.props;
+    var sorted_themes = [];
+    if (show_closed && show_open) {
+      sorted_themes = themes;
+    } else if (show_closed) {
+      sorted_themes = closed_themes;
+    } else if (show_open) {
+      sorted_themes = open_themes;
     }
-    console.log(sorted_themes);
+    // console.log(sorted_themes);
     return (
       <View style={{
         
@@ -87,13 +92,15 @@ export { ThemesComponent };
 
 const mapStateToProps = (state, ownProps) => {
   const { theme } = state;
-  const { themes, loaded_count, show_closed, show_open } = theme;
+  const { themes, loaded_count, show_closed, show_open, sorted_themes, closed_themes, open_themes } = theme;
   return {
     ...ownProps,
     themes,
     loaded_count,
     show_closed,
     show_open,
+    closed_themes,
+    open_themes
   };
 };
 

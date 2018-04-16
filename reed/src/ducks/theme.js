@@ -26,6 +26,8 @@ const INITIAL_STATE = {
     current_theme_author: '',
     theme_error_message: '',
     themes: [],
+    closed_themes: [],
+    open_themes: [],
     loaded_count: 0,
     show_closed: false,
     show_open: false,
@@ -80,19 +82,18 @@ export default function reducer(state = INITIAL_STATE, action) {
                 ...state,
             }
         case TOGGLE_SHOW_CLOSED:
-            console.log(!state.show_closed);
-
+            var going_tobe = !state.show_closed;
             return {
                 ...state,
-                show_closed: !state.show_closed,
-                // need to add filtering script
+                show_closed: going_tobe,
+                closed_themes: _.map(state.themes, function(obj){if (obj.written == going_tobe) return obj})
             }
         case TOGGLE_SHOW_OPEN:
-            console.log(!state.show_open);
+            var going_tobe = !state.show_open;
             return {
                 ...state,
-                show_open: !state.show_open,
-                // need to add filtering script
+                show_open: going_tobe,
+                open_themes: _.map(state.themes, function(obj){if (obj.written != going_tobe) return obj})
             }
         default:
             return state;

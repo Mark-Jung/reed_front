@@ -24,7 +24,9 @@ const renderSorts = () => {
 const renderTiles = (themes, onTilePress) => {
     return _.map(themes, (item, index) => {
         let all_months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    
+        if (typeof item === 'undefined') {
+            return (<View key={index}/>)
+        }
         let icon = '';
         if (item.written) {
           icon = icons.sealed_mail;
