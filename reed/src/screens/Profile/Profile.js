@@ -48,7 +48,7 @@ class ProfileComponent extends Component {
           </Tab>
           <Tab heading="Tab2">
             <Text>
-              ahung2
+              what to put here.
             </Text>
           </Tab>
           <Tab heading={<TabHeading> <Icon name="bookmarks" style={{color: 'white'}}/> </TabHeading>}>

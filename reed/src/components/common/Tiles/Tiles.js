@@ -10,7 +10,8 @@ const {
     slideImageStyle,
     themeTextStyle,
     wrapperStyle,
-    themeIconStyle
+    themeIconStyle,
+    tileHeaderStyle,
 } = styles;
 
 const renderSorts = () => {
@@ -57,9 +58,9 @@ const renderTiles = (themes, onTilePress) => {
                 key={index}
             >
                 <Card>
-                    <CardItem header style={{flexDirection: "row", flexWrap: "wrap"}}>
-                        <Text>
-                            {month}, {day}, {year}, {sunmoon}
+                    <CardItem header style={tileHeaderStyle}>
+                        <Text style={{fontSize: 9}}>
+                            {month} {day} {year} {sunmoon}
                         </Text>
                         <RNImage source={icon} style={themeIconStyle} />
                     </CardItem>
