@@ -37,11 +37,7 @@ export default function reducer(state = INITIAL_STATE, action) {
         case LOAD_POST_FAILURE:
             return {
                 ...state,
-                current_release_time: 'Something went wrong!',
-                current_theme: 'No available theme!',
-                current_theme_inspire: 'No available inspiration!',
-                current_theme_author: 'Contact the developer!',
-                theme_error_message: 'Something went wrong!',
+                error_message: 'Something went wrong!',
             };   
         
         case TEMP_SAVE:
@@ -57,8 +53,20 @@ export default function reducer(state = INITIAL_STATE, action) {
                 draft: old_draft,
             }
         
+        case SEND_POST:
+        
+        case SEND_POST_FAILURE:
+            return {
+                ...state,
+                error_message: action.payload
+            }
+        
+        case SEND_POST_SUCCESS:
         default:
-            return state;
+            return {
+                ...state,
+                error_message: ''
+            }
     }
 }
 
@@ -91,6 +99,39 @@ export const load_post_failure = (dispatch, error) => {
     dispatch({
         type: LOAD_POST_FAILURE,
         payload: error
+    });
+}
+
+export const send_post = (content, theme) => {
+    const url = `${postAPIRoot}/posts`;
+    return (dispatch) => {
+        dispatch({
+          type: SEND_POST
+        });
+        axios.post(url, {"theme": theme, "content": content, "anonymity": false}, {
+            headers: {
+                'Authorization': jwt_demo, 
+                'Content-Type': 'application/json'
+            },
+        })
+          .then((response) => load_post_success(dispatch, response))
+          .catch((error) => load_post_failure(dispatch, error));
+    };
+}
+
+export const send_post_success = (disptach, response) => {
+    console.log(response.data)
+    dispatch({
+        type: SEND_POST_SUCCESS,
+        payload: response
+    });
+}
+
+export const send_post_failure = (dispatch, error) => {
+    console.log(error)
+    dispatch({
+        type: SEND_POST_FAILURE,
+        payload: "Error in sending post."
     });
 }
 

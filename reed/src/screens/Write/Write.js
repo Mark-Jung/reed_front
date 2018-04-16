@@ -18,7 +18,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash'; 
 import { Input } from '../../components/common/Input';
 import {
-  post_publish,
+  send_post,
   temp_save,
 } from '../../ducks/post';
 
@@ -30,36 +30,26 @@ import {
 
 class WriteComponent extends Component {
     static navigationOptions({ navigation }) {
-        return {
-          header: (headerProps) => {
-            return (
-              <Header>
-                <Left>
-                  <Button
-                    transparent
-                    onPress={() => {
-                      headerProps.navigation.dispatch(NavigationActions.back());
-                    }}
-                  >
-                    <Icon style={{}} name='arrow-back' />
-                  </Button>
-                </Left>
-                <Right>
-                  <Button
-                    transparent
-                    // onPress={() => {
-                    //   this.props.
-                    // }}
-                  >
-                    <Text>
-                      Publish
-                    </Text>
-                  </Button>
-                </Right>
-              </Header>
-            );
-          }
-        };
+      
+      return {
+        header: (headerProps) => {
+          return (
+            <Header>
+              <Left>
+                <Button
+                  transparent
+                  onPress={() => {
+                    headerProps.navigation.dispatch(NavigationActions.back());
+                  }}
+                >
+                  <Icon style={{}} name='arrow-back' />
+                </Button>
+              </Left>
+              
+            </Header>
+          );
+        }
+      };
     }
     
     render() {
@@ -72,10 +62,25 @@ class WriteComponent extends Component {
         // console.log(cur_draft);
       }
       return (
-        <Input 
-          onChangeText={(cur_draft) => this.props.temp_save(cur_draft, theme)}
-          value={cur_draft}
-        />
+        <View>
+          <Input 
+            onChangeText={(cur_draft) => this.props.temp_save(cur_draft, theme)}
+            value={cur_draft}
+          />
+          <Right>
+            <Button
+              transparent
+              onPress={() => {
+                this.props.send_post(cur_draft, theme)
+              }}
+            >
+              <Text>
+                Publish
+              </Text>
+            </Button>
+          </Right>
+        </View>
+        
       );
     }
 }
@@ -94,4 +99,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export const Write = connect(mapStateToProps, {
   temp_save,
+  send_post
 })(WriteComponent);
