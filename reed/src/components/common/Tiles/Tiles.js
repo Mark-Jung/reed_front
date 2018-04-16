@@ -49,7 +49,7 @@ const renderTiles = (themes, onTilePress) => {
         return (
             <TouchableOpacity
                 onPress={() => {
-                    onTilePress(item.theme);
+                    onTilePress(item);
                 }}
                 style={{...slideImageStyle, width: size, height: size, marginHorizontal: 0,}}
                 key={index}

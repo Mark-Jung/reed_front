@@ -31,7 +31,7 @@ class CollectionComponent extends Component {
 
   componentDidMount() {
     const { theme } = this.props.navigation.state.params;
-    this.props.load_post(theme);
+    this.props.load_post(theme.theme);
   }
 
   renderPost() {
@@ -101,13 +101,13 @@ class CollectionComponent extends Component {
   render() {
     const { theme } = this.props.navigation.state.params;
     const { postList } = this.props;
-    // console.log(postList)
+    // console.log(theme.written);
 
     return (
       <View style={{flex:1}}>
         {this.renderCollection()}
-        <Fab
-          active={true}
+        {theme.written ? <View></View>:<Fab
+          active={theme.written}
           direction="up"
           containerStyle={{ }}
           style={{ backgroundColor: '#5067FF' }}
@@ -116,12 +116,12 @@ class CollectionComponent extends Component {
             this.props.navigation.dispatch(NavigationActions.navigate({
               routeName: 'Write',
               params: {
-                theme
+                theme: theme.theme
               }
             }));
           }}>
           <Icon name="share"/>
-        </Fab>
+        </Fab>}
       </View>
     );
   }
