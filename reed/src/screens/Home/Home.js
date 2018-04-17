@@ -19,6 +19,7 @@ import Swiper from 'react-native-swiper';
 import {
   load_current_theme,
 } from '../../ducks/theme';
+import icons from '../../resources/img/icons';
 
 const {
   wrapperStyle,
@@ -26,7 +27,8 @@ const {
   themeStyle,
   slide2Style,
   inspireStyle,
-  authorStyle
+  authorStyle,
+  logoStyle
 } = styles;
 
 class HomeComponent extends Component {
@@ -37,11 +39,13 @@ class HomeComponent extends Component {
   render() {
     const { current_release_time, current_theme, current_theme_author, current_theme_inspire, error_message } = this.props;
     return (
-      <Swiper style={wrapperStyle} loop={false}>
+      <Swiper style={wrapperStyle} loop={false} activeDotColor={'#6FCD97'}>
         <View style={slide1Style}>
+          <Image style={logoStyle} source={icons.demoapp_typewriter} style={{width: 70, height: 70}}/>
           <Text style={themeStyle}>{current_theme}</Text>
         </View>
         <View style={slide2Style}>
+           <Image style={logoStyle} source={icons.demoapp_typewriter} style={{width: 70, height: 70}}/>  
           <Text style={inspireStyle}>{current_theme_inspire}</Text>
           <Text style={authorStyle}>{current_theme_author}</Text>
         </View>

@@ -6,7 +6,6 @@ export default {
     slide1Style: {
         flex: 1,
         flexDirection: 'column',
-        justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#C5DACC'
     },
@@ -15,11 +14,11 @@ export default {
         fontSize: 24,
         color: 'black',
         alignSelf: 'center',
+        paddingTop: 200,
     },
     slide2Style: {
         flex: 1,
         flexDirection: 'column',
-        justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#C5DACC'
     },
@@ -28,12 +27,17 @@ export default {
         fontSize: 24,
         color: 'black',
         alignSelf: 'center',
+        paddingTop: 200,
     },
     authorStyle: {
         fontWeight: '400',
         fontSize: 24,
         color: 'black',
         alignSelf: 'center',
+    },
+    logoStyle: {
+        marginTop: -100,
+
     },
 
 };

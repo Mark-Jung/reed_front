@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import { TouchableOpacity, Image as RNImage, View, Dimensions } from 'react-native';
-import { Card, CardItem, Text } from 'native-base';
+import { Card, CardItem, Text, Right } from 'native-base';
 const { width } = Dimensions.get("window");
 
 import icons from '../../../resources/img/icons';
@@ -30,7 +30,7 @@ const renderTiles = (themes, onTilePress) => {
         }
         let icon = '';
         if (item.written) {
-          icon = icons.sealed_mail;
+          icon = icons.closed_mail;
         } else {
           icon = icons.open_mail;
         }
@@ -56,18 +56,26 @@ const renderTiles = (themes, onTilePress) => {
                 }}
                 style={{...slideImageStyle, width: size, height: size, marginHorizontal: 0,}}
                 key={index}
+                
             >
-                <Card>
-                    <CardItem header style={tileHeaderStyle}>
+                <Card
+                    style={{ backgroundColor: '#F2F2F270'}}
+                >
+                    <CardItem header style={{...tileHeaderStyle, backgroundColor: '#F2F2F270'}}>
                         <Text style={{fontSize: 9}}>
                             {month} {day} {year} {sunmoon}
                         </Text>
-                        <RNImage source={icon} style={themeIconStyle} />
+                        
                     </CardItem>
-                    <CardItem>
+                    <CardItem style={{ backgroundColor: '#F2F2F270'}}>
                         <Text style={themeTextStyle}>
                             {item.theme}
                         </Text>
+                    </CardItem>
+                    <CardItem footer style={{backgroundColor: '#F2F2F270'}}>
+                        <Right style={{backgroundColor: '#F2F2F2100'}}>
+                            <RNImage source={icon} style={themeIconStyle} />
+                        </Right>
                     </CardItem>
                 </Card>
             </TouchableOpacity>

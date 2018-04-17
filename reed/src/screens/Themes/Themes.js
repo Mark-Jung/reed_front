@@ -14,6 +14,7 @@ import {
 import { NavigationActions } from 'react-navigation';
 import { View, Text, ScrollView, TouchableHighlight, Image, RefreshControl, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
+import styles from './styles';
 
 import icons from '../../resources/img/icons';
 import {
@@ -24,6 +25,9 @@ import {
 import {
   Tiles
 } from '../../components/common';
+const {
+  buttonStyle
+} = styles;
 
 
 class ThemesComponent extends Component {
@@ -56,23 +60,25 @@ class ThemesComponent extends Component {
     // console.log(sorted_themes);
     return (
       <View style={{
-        
+        backgroundColor: '#C0DBCB'
       }}>
-        <View style={{flexDirection: 'row',}}>
+        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
           <Button
             onPress={this.props.toggle_show_closed}
-            style={show_closed ? {backgroundColor: 'green', opacity: 0.4} : {backgroundColor: 'green'} }
+            style={show_closed ? {...buttonStyle, backgroundColor: '#DBEDD3', opacity: 0.4} : {...buttonStyle, backgroundColor: '#DBEDD3'} }
           >
-            <Image source={icons.closed_mail} style={{width:50, height: 50}}/>
+            <Image source={icons.closed_mail} style={{width:20, height: 20}}/>
           </Button>
           <Button
             onPress={this.props.toggle_show_open}
-            style={show_open ?  {backgroundColor: 'green', opacity: 0.4} : {backgroundColor: 'green'}}
+            style={show_open ?  {...buttonStyle, backgroundColor: '#DBEDD3', opacity: 0.4} : {...buttonStyle, backgroundColor: '#DBEDD3'}}
           >
-            <Image source={icons.open_mail} style={{width:50, height: 50}}/>
+            <Image source={icons.open_mail} style={{width:20, height: 20}}/>
           </Button>
         </View>
-        <ScrollView>
+        <ScrollView 
+
+        >
           <Tiles 
             themes={sorted_themes} 
             onTilePress={this.onTilePress.bind(this)} 

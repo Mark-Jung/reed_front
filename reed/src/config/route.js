@@ -75,7 +75,7 @@ const MainTabRouteConfig = {
     tabBarPosition: 'bottom',
     tabBarOptions: {
       //This is where you set the highlight color for the bottom tab navigation 
-      activeTintColor: '#ee463b'
+      activeTintColor: 'black'
     },
     lazy: true
   };

@@ -25,6 +25,7 @@ import {
 
 const {
   cardImageStyle,
+  cardHeader
 } = styles;
 
 class CollectionComponent extends Component {
@@ -35,18 +36,23 @@ class CollectionComponent extends Component {
   }
 
   renderPost() {
-    const { postList } = this.props;
+    const { postList, } = this.props;
     if (!_.isEmpty(postList)) {
       return _.map(postList, (post, index) => {
+        
         return (
           <Card
             key={index}
             style={cardImageStyle}
           >
             <CardItem
-              Header
+              Header style={cardHeader}
             >
               <Icon/>
+              <Text>
+                {post.writer_username} 
+              </Text>
+
             </CardItem>
             <CardItem>
               <Text>
@@ -70,7 +76,8 @@ class CollectionComponent extends Component {
     
 
   renderCollection() {
-    const { current_theme, current_theme_inspire, current_theme_author } = this.props
+    const { current_theme, current_theme_inspire, current_theme_author } = this.props;
+    // console.log(current_theme);
     return (
       <ScrollView>
         <Card
@@ -84,6 +91,7 @@ class CollectionComponent extends Component {
                 {current_theme}
               </Text>
             </CardItem>
+
             <CardItem>
               <Text>
                 {current_theme_inspire}
@@ -104,13 +112,13 @@ class CollectionComponent extends Component {
     // console.log(theme.written);
 
     return (
-      <View style={{flex:1}}>
+      <View style={{flex:1, backgroundColor: '#C0DBCB'}}>
         {this.renderCollection()}
         {theme.written ? <View></View>:<Fab
           active={theme.written}
           direction="up"
           containerStyle={{ }}
-          style={{ backgroundColor: '#5067FF' }}
+          style={{ backgroundColor: '#FCECB8', alignContent: 'center', justifyContent: 'center' }}
           position="bottomRight"
           onPress={() => {
             this.props.navigation.dispatch(NavigationActions.navigate({
@@ -120,7 +128,7 @@ class CollectionComponent extends Component {
               }
             }));
           }}>
-          <Icon name="share"/>
+          <Text style={{fontSize: 30, color:'black'}}>+</Text>
         </Fab>}
       </View>
     );

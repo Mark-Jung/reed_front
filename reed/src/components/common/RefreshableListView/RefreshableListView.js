@@ -10,12 +10,12 @@ export const RefreshableListView = (props) => {
         <RefreshControl
           refreshing={props.refreshing}
           onRefresh={props.onRefresh}
-          tintColor='#e0258e'
+          tintColor='black'
         /> :
         <RefreshControl
           refreshing={props.refreshing}
           onRefresh={props.onRefresh}
-          colors={['#e0258e']}
+          colors={['black']}
         />
       }
     />

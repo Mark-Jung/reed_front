@@ -18,8 +18,12 @@ import styles from './styles';
 import { View, Text, ListView, TouchableOpacity, Image, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
 import {
+  Tiles
+} from '../../components/common/';
+
+import {
   load_profile
-} from '../../ducks/profile'
+} from '../../ducks/profile';
 
 const {
   followInfoStyle,
@@ -42,13 +46,11 @@ class ProfileComponent extends Component {
     return (
       <Tabs initialPage={0} tabBarUnderlineStyle={{backgroundColor: 'grey'}}>
           <Tab heading={ <TabHeading><Icon name="apps" /></TabHeading>}>
+            {/* <Tile
+              
+            /> */}
             <Text>
-              tileview
-            </Text>
-          </Tab>
-          <Tab heading="Tab2">
-            <Text>
-              what to put here.
+              nihao
             </Text>
           </Tab>
           <Tab heading={<TabHeading> <Icon name="bookmarks" style={{color: 'white'}}/> </TabHeading>}>
@@ -75,7 +77,6 @@ class ProfileComponent extends Component {
               {username}
             </Text>
           </View>
-          
         </View>
 
         <View

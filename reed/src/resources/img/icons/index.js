@@ -6,4 +6,5 @@ export default {
     open_mail: require('./open_mail.png'),
     sealed_mail: require('./sealed_mail.png'),
     closed_mail: require('./closed_mail.png'),
+    demoapp_typewriter: require('./demoapp_typewriter.png'),
 };
