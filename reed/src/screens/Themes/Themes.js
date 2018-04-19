@@ -76,9 +76,7 @@ class ThemesComponent extends Component {
             <Image source={icons.open_mail} style={{width:20, height: 20}}/>
           </Button>
         </View>
-        <ScrollView 
-
-        >
+        <ScrollView>
           <Tiles 
             themes={sorted_themes} 
             onTilePress={this.onTilePress.bind(this)} 
@@ -89,10 +87,14 @@ class ThemesComponent extends Component {
   }
   render() {
     return (
-      this.renderThemeTiles()
+      <View 
+        style={{backgroundColor:'#C0DBCB'}}
+      >
+        {this.renderThemeTiles()}
+      </View>
     );
   }
-}
+};
 
 export { ThemesComponent };
 

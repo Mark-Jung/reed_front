@@ -4,3 +4,4 @@ export * from './Search';
 export * from './Profile';
 export * from './Write';
 export * from './Collection';
+export * from './Post';

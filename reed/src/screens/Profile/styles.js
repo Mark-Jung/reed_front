@@ -14,7 +14,7 @@ export default {
 
     followButtonStyle: {
         height: 30,
-        backgroundColor: 'grey',
+        backgroundColor: '#E5E5E5',
         borderRadius: 35,
     },
 
@@ -24,7 +24,7 @@ export default {
 
     nameStyle: {
         borderRadius: 40, 
-        backgroundColor: 'grey',
+        backgroundColor: '#C4C4C4',
         width: 80,
         height: 80,
         justifyContent: 'center',
@@ -36,7 +36,19 @@ export default {
         flexDirection: 'row',
         backgroundColor: '#C5DACC',
         justifyContent: 'space-between',
-    }
-
+    },
+    
+    wrapperStyle: {
+    },
+    slideImageStyle: {
+        alignSelf: "flex-start",
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    themeTextStyle:{
+        fontSize: 12,
+        textAlignVertical: "center",
+        textAlign: "center",
+    },
     
 };
