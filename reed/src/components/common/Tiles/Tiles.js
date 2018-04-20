@@ -12,15 +12,10 @@ const {
     wrapperStyle,
     themeIconStyle,
     tileHeaderStyle,
+    sunmoonStyle,
 } = styles;
 
-const renderSorts = () => {
-    return (
-        <Text>
-            wowowowowowowow1
-        </Text>
-    );
-};
+
 
 const renderTiles = (themes, onTilePress) => {
     return _.map(themes, (item, index) => {
@@ -34,19 +29,21 @@ const renderTiles = (themes, onTilePress) => {
         } else {
           icon = icons.open_mail;
         }
-        let margin = width / (3 * 10);
-        let size = (width) / 3;
+        // let margin = width / (3 * 10);
+        // let size = (width) / 3;
+        let margin = width / (3 * 40);
+        let size = (width - margin * 6) / 3;
         let dt = new Date(item.release_time);
         let month_num = dt.getMonth();
         let day = dt.getDate();
-        let year = dt.getFullYear();
+        let year = dt.getFullYear() + '    ';
         let time = dt.getHours();
         let month = all_months[month_num];
     
         if (time === 6) {
-            sunmoon = 'Sun';
+            sunmoon = icons.sun;
         }else {
-            sunmoon = 'Moon';
+            sunmoon = icons.moon;
         }
     
         return (
@@ -54,16 +51,16 @@ const renderTiles = (themes, onTilePress) => {
                 onPress={() => {
                     onTilePress(item);
                 }}
-                style={{...slideImageStyle, width: size, height: size, marginHorizontal: 0,}}
+                style={{...slideImageStyle, width: size, height: size, marginHorizontal: margin,}}
                 key={index}
                 
             >
                 <Card
-                    style={{ backgroundColor: '#F2F2F270'}}
+                    style={{ backgroundColor: '#F2F2F270', marginHorizontal: 0,}}
                 >
                     <CardItem header style={{...tileHeaderStyle, backgroundColor: '#F2F2F270'}}>
                         <Text style={{fontSize: 9}}>
-                            {month} {day} {year} {sunmoon}
+                            {month} {day} {year} <RNImage style={sunmoonStyle} source={sunmoon}/>
                         </Text>
                         
                     </CardItem>
@@ -72,10 +69,10 @@ const renderTiles = (themes, onTilePress) => {
                             {item.theme}
                         </Text>
                     </CardItem>
-                    <CardItem footer style={{backgroundColor: '#F2F2F270'}}>
-                        <Right style={{backgroundColor: '#F2F2F2100'}}>
-                            <RNImage source={icon} style={themeIconStyle} />
-                        </Right>
+                    <CardItem footer style={{backgroundColor: '#F2F2F270', flex: 1}}>
+                        
+                        <RNImage source={icon} style={themeIconStyle} />
+                        
                     </CardItem>
                 </Card>
             </TouchableOpacity>

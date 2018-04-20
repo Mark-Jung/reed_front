@@ -75,7 +75,6 @@ export default function reducer(state = INITIAL_STATE, action) {
     }
 }
 
-
 //Action Creators
 export const load_post = (theme) => {
     const url = `${postAPIRoot}/postlist/theme/` + theme;
@@ -125,7 +124,7 @@ export const send_post = (content, theme) => {
 }
 
 export const send_post_success = (disptach, response) => {
-    console.log(response.data);
+    // console.log(response.data);
     dispatch({
         type: SEND_POST_SUCCESS,
         payload: response
@@ -133,7 +132,7 @@ export const send_post_success = (disptach, response) => {
 }
 
 export const send_post_failure = (dispatch, error) => {
-    console.log(error)
+    // console.log(error)
     dispatch({
         type: SEND_POST_FAILURE,
         payload: "Error in sending post."

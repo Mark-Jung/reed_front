@@ -19,13 +19,15 @@ import {
 } from 'native-base';
 import styles from './styles';
 import { NavigationActions } from 'react-navigation';
+import _ from 'lodash';
 import { View, ListView, TouchableOpacity, Image, RefreshControl, Dimensions, ScrollView, } from 'react-native';
 import { connect } from 'react-redux';
 import icons from '../../resources/img/icons';
 const { width } = Dimensions.get("window");
 
 import {
-  load_profile
+  load_profile,
+  load_saved,
 } from '../../ducks/profile';
 
 const {
@@ -43,11 +45,13 @@ const {
 
 
 class ProfileComponent extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.load_profile('mark');
+    // while(this.props.saved == 'na'){}
+    
   }
 
-  renderTiles(source, onTilePress) {
+  renderTiles(source, onTilePress, showAuthor) {
     return _.map(source, (item, index) => {
       if (typeof item === 'undefined') {
           return (<View key={index}/>)
@@ -66,6 +70,8 @@ class ProfileComponent extends Component {
                   style={{ backgroundColor: '#F2F2F270'}}
               >
                 <CardItem header style={{ backgroundColor: '#F2F2F270'}}>
+                {showAuthor ? <Text>{item.writer_username}</Text> : <View/>}
+
                 </CardItem>
                 <CardItem style={{ backgroundColor: '#F2F2F270'}}>
                   
@@ -75,6 +81,7 @@ class ProfileComponent extends Component {
                   
                 </CardItem>
                 <CardItem footer style={{ backgroundColor: '#F2F2F270'}}>
+                  
                 </CardItem>
               </Card>
           </TouchableOpacity>
@@ -100,7 +107,21 @@ class ProfileComponent extends Component {
           flexWrap: "wrap",
           backgroundColor:'#C0DBCB',
         }}>
-          {this.renderTiles(this.props.written, this.onTilePress.bind(this))}
+          {this.renderTiles(this.props.written, this.onTilePress.bind(this), false)}
+        </View>
+      </ScrollView>
+    );
+  }
+  renderSaved() {
+    return (
+      <ScrollView style={{flex: 1, backgroundColor: '#C0DBCB'}}>
+        <View style={{
+          justifyContent: "flex-start", 
+          flexDirection: "row", 
+          flexWrap: "wrap",
+          backgroundColor:'#C0DBCB',
+        }}>
+          {this.renderTiles(this.props.saved_post, this.onTilePress.bind(this), true)}
         </View>
       </ScrollView>
     );
@@ -112,10 +133,11 @@ class ProfileComponent extends Component {
           <Tab heading={ <TabHeading><Icon name="apps" /></TabHeading>}>
             {this.renderWritten()}
           </Tab>
-          <Tab heading={<TabHeading> <Icon name="bookmarks" style={{}}/> </TabHeading>}>
-            <Text>
-              bookmarked
-            </Text>
+          <Tab heading={<TabHeading> <Icon name="bookmarks" /> </TabHeading>}>
+            {/* <View style={{backgroundColor:'#C0DBCB'}}>
+              {this.renderSaved()}
+            </View> */}
+            {this.renderSaved()}
           </Tab>
         </Tabs>
     );
@@ -194,13 +216,17 @@ class ProfileComponent extends Component {
   }
 
   render() {
-    const { username, following_count, followed_by_count, intro, uid, written } = this.props;
-    console.log(written);
+    const { username, following_count, followed_by_count, intro, uid, written, saved_post, saved } = this.props;
+    if (this.props.saved != 'na' &&  _.isEmpty(this.props.saved_post)){
+      this.props.load_saved(saved);
+    }
+    console.log(saved_post);
+
     return (
       <View
         style={{backgroundColor: '#C5DACC', flex: 1}}
       >
-        <Image source={icons.demoapp_typewriter} style={{width: 70, height: 70, alignSelf: 'center'}}/>
+        <Image source={icons.demoapp_typewriter} style={{width: 90, height: 90, alignSelf: 'center'}}/>
         <View
           style={upperStyle}
         >
@@ -219,7 +245,7 @@ export { ProfileComponent };
 
 const mapStateToProps = (state, ownProps) => {
   const { profile } = state;
-  const { username, following_count, followed_by_count, intro, uid, written } = profile;
+  const { username, following_count, followed_by_count, intro, uid, written, saved, saved_post } = profile;
   return {
     ...ownProps,
     username,
@@ -227,11 +253,14 @@ const mapStateToProps = (state, ownProps) => {
     followed_by_count,
     intro,
     uid,
-    written
+    written,
+    saved,
+    saved_post,
   };
 };
 
 export const Profile = connect(mapStateToProps, {
   load_profile,
+  load_saved,
 })(ProfileComponent);
   

@@ -9,7 +9,8 @@ import {
   Profile,
   Search,
   Write,
-  Collection
+  Collection,
+  Post
 } from '../screens';
 
 const {
@@ -31,6 +32,7 @@ const MainTabRouteConfig = {
       screen: Home,
       navigationOptions: {
         tabBarLabel: 'Home',
+        title:'reed',
         // Note: By default the icon is only shown on iOS. Search the showIcon option below.
         tabBarIcon: ({ tintColor }) => (
           <Image
@@ -56,7 +58,6 @@ const MainTabRouteConfig = {
     Profile: {
       screen: Profile,
       navigationOptions: {
-        title: 'My Profile',
         tabBarLabel: 'My Account',
         // Note: By default the icon is only shown on iOS. Search the showIcon option below.
         tabBarIcon: ({ tintColor }) => (
@@ -92,6 +93,9 @@ const MainTabRouteConfig = {
     Collection: {
       screen: Collection
     },
+    Post: {
+      screen: Post
+    }
 
     // Login: {
     //   screen: Login,

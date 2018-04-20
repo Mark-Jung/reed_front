@@ -3,7 +3,7 @@ import axios from 'axios';
 import APIConfig from '../config/api';
 
 
-const themeAPIRoot = `${APIConfig.localapiRoot}/user`;
+const profileAPIRoot = `${APIConfig.localapiRoot}/user`;
 const jwt_demo = APIConfig.jwt_demo;
 
 
@@ -11,6 +11,10 @@ const jwt_demo = APIConfig.jwt_demo;
 export const LOAD_PROFILE = 'reed/profile/LOAD_PROFILE';
 export const LOAD_PROFILE_SUCCESS = 'reed/profile/LOAD_PROFILE_SUCCESS';
 export const LOAD_PROFILE_FAILURE = 'reed/profile/LOAD_PROFILE_FAILURE';
+export const LOAD_SAVED_POST = 'reed/profile/LOAD_SAVED_POST';
+export const LOAD_SAVED_POST_SUCCESS = 'reed/profile/LOAD_SAVED_POST_SUCCESS';
+export const LOAD_SAVED_POST_FAILURE = 'reed/profile/LOAD_SAVED_POST_FAILURE';
+
 
 
 const INITIAL_STATE = {
@@ -18,7 +22,7 @@ const INITIAL_STATE = {
     username: '',
     sec_question: '',
     sec_answer: '',
-    saved: null,
+    saved: 'na',
     saved_count: 0,
     followed_by_count: 0,
     followed_by: 0,
@@ -26,6 +30,8 @@ const INITIAL_STATE = {
     following_count: 0,
     intro: '',
     profile_error_message: '',
+    written: [],
+    saved_post: [],
 };
 
 
@@ -47,6 +53,7 @@ export default function reducer(state = INITIAL_STATE, action) {
                     following: action.payload.following,
                     following_count: action.payload.following_count,
                     intro: action.payload.intro,
+                    written: action.payload.written,
                     error_message: '',
                 };
             } else {
@@ -60,6 +67,19 @@ export default function reducer(state = INITIAL_STATE, action) {
                 ...state,
                 profile_error_message: 'Failed to load profile. Try restarting the application'
             };   
+        case LOAD_SAVED_POST:
+        
+        case LOAD_SAVED_POST_SUCCESS:
+            // console.log("loading saved post is successful");
+            return {
+                ...state,
+                saved_post: action.payload
+            }
+        case LOAD_SAVED_POST_FAILURE:
+            return {
+                ...state,
+                profile_error_message: 'Failed to load saved posts.'
+            }
         default:
             return state;
     }
@@ -67,8 +87,41 @@ export default function reducer(state = INITIAL_STATE, action) {
 
 
 //Action Creators
+
+export const load_saved = (saved) => {
+    const url = `${APIConfig.localapiRoot}/postlist/id/please`;
+    
+    return (dispatch) => {
+        dispatch({
+            type: LOAD_SAVED_POST
+        });
+        axios.post(url, {'wanted': saved },{
+            headers: {
+                'Authorization': jwt_demo, 
+                'Content-Type': 'application/json'
+            },
+        })
+        .then((response) => load_saved_success(dispatch, response))
+        .catch((error) => load_saved_failure(dispatch, error));
+    };
+}
+
+export const load_saved_success = (dispatch, response) => {
+    
+    dispatch({
+        type: LOAD_SAVED_POST_SUCCESS,
+        payload: response.data.response,
+    });
+}
+export const load_saved_failure = (dispatch, error) => {
+    dispatch({
+        type: LOAD_SAVED_POST_FAILURE,
+        payload: error
+    });
+}
+
 export const load_profile = (user) => {
-    const url = `${themeAPIRoot}/${user}`;
+    const url = `${profileAPIRoot}/${user}`;
     return (dispatch) => {
         dispatch({
           type: LOAD_PROFILE

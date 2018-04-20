@@ -22,6 +22,7 @@ import styles from './styles';
 import {
   load_post,
 } from '../../ducks/post';
+import { icons } from '../../resources/img/icons'
 
 const {
   cardImageStyle,
@@ -34,6 +35,8 @@ class CollectionComponent extends Component {
     const { theme } = this.props.navigation.state.params;
     this.props.load_post(theme.theme);
   }
+
+
 
   renderPost() {
     const { postList, } = this.props;
@@ -48,11 +51,10 @@ class CollectionComponent extends Component {
             <CardItem
               Header style={cardHeader}
             >
-              <Icon/>
+              <Image source={post.icons.bookmark}/>
               <Text>
                 {post.writer_username} 
               </Text>
-
             </CardItem>
             <CardItem>
               <Text>
@@ -76,7 +78,9 @@ class CollectionComponent extends Component {
     
 
   renderCollection() {
-    const { current_theme, current_theme_inspire, current_theme_author } = this.props;
+    // const { current_theme, current_theme_inspire, current_theme_author } = this.props;
+    const { theme } = this.props.navigation.state.params;
+    const { theme_inspire, theme_author } = theme;
     // console.log(current_theme);
     return (
       <ScrollView>
@@ -88,16 +92,16 @@ class CollectionComponent extends Component {
             >
               <Icon/>
               <Text>
-                {current_theme}
+                {theme.theme}
               </Text>
             </CardItem>
 
             <CardItem>
               <Text>
-                {current_theme_inspire}
+                {theme_inspire}
               </Text>
               <Text>
-                {current_theme_author}
+                {theme_author}
               </Text>
             </CardItem>
           </Card>

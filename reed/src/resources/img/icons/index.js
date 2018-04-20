@@ -6,5 +6,9 @@ export default {
     open_mail: require('./open_mail.png'),
     sealed_mail: require('./sealed_mail.png'),
     closed_mail: require('./closed_mail.png'),
-    demoapp_typewriter: require('./demoapp_typewriter.png'),
+    demoapp_typewriter: require('./new_logo.png'),
+    bookmark: require('./bookmark.png'),
+    bookmarked: require('./bookmarkEDD.png'),
+    moon: require('./moon.png'),
+    sun: require('./sun.png'),
 };

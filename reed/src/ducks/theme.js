@@ -19,6 +19,7 @@ export const TOGGLE_SHOW_CLOSED = 'reed/theme/TOGGLE_SHOW_CLOSED';
 export const TOGGLE_SHOW_OPEN = 'reed/theme/TOGGLE_SHOW_OPEN';
 
 
+
 const INITIAL_STATE = {
     current_release_time: '',
     current_theme: '',

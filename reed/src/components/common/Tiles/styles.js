@@ -23,4 +23,9 @@ export default {
         flexWrap: "wrap", 
         alignItems: 'center',
     },
+    sunmoonStyle: {
+        width: 12,
+        height: 12,
+        alignSelf: 'flex-end'
+    }
 }
