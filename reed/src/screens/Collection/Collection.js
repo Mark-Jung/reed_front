@@ -22,7 +22,7 @@ import styles from './styles';
 import {
   load_post,
 } from '../../ducks/post';
-import { icons } from '../../resources/img/icons'
+import icons from '../../resources/img/icons'
 
 const {
   cardImageStyle,
@@ -51,13 +51,13 @@ class CollectionComponent extends Component {
             <CardItem
               Header style={cardHeader}
             >
-              <Image source={post.icons.bookmark}/>
-              <Text>
+              <Image source={icons.bookmark}/>
+              <Text style={{fontFamily: 'Heiti SC',}}>
                 {post.writer_username} 
               </Text>
             </CardItem>
             <CardItem>
-              <Text>
+              <Text style={{fontFamily: 'Heiti SC',}}>
                 {post.content}
               </Text>
             </CardItem>
@@ -91,13 +91,13 @@ class CollectionComponent extends Component {
               Header
             >
               <Icon/>
-              <Text>
+              <Text style={{fontFamily: 'Heiti SC',}}>
                 {theme.theme}
               </Text>
             </CardItem>
 
             <CardItem>
-              <Text>
+              <Text style={{fontFamily: 'Heiti SC',}}>
                 {theme_inspire}
               </Text>
               <Text>
@@ -132,7 +132,7 @@ class CollectionComponent extends Component {
               }
             }));
           }}>
-          <Text style={{fontSize: 30, color:'black'}}>+</Text>
+          <Text style={{fontFamily: 'Heiti SC', fontSize: 30, color:'black'}}>+</Text>
         </Fab>}
       </View>
     );

@@ -86,7 +86,7 @@ class WriteComponent extends Component {
                 // }));
               }}
             >
-              <Text>
+              <Text style={{fontFamily: 'Heiti SC',}}>
                 Publish
               </Text>
             </Button>

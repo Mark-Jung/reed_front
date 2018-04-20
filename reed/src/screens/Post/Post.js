@@ -30,13 +30,13 @@ class PostComponent extends Component {
 
     return (
       <View style={{flex:1, backgroundColor: '#C0DBCB'}}>
-        <Text>
+        <Text style={{fontFamily: 'Heiti SC',}}>
           {post.theme}
         </Text>
-        <Text>
+        <Text style={{fontFamily: 'Heiti SC',}}>
           {post.content}
         </Text>
-        <Text>
+        <Text style={{fontFamily: 'Heiti SC',}}>
           {post.created}
         </Text>
       </View>

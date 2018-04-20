@@ -59,13 +59,13 @@ const renderTiles = (themes, onTilePress) => {
                     style={{ backgroundColor: '#F2F2F270', marginHorizontal: 0,}}
                 >
                     <CardItem header style={{...tileHeaderStyle, backgroundColor: '#F2F2F270'}}>
-                        <Text style={{fontSize: 9}}>
+                        <Text style={{fontSize: 9, fontFamily: 'Heiti SC',}}>
                             {month} {day} {year} <RNImage style={sunmoonStyle} source={sunmoon}/>
                         </Text>
                         
                     </CardItem>
                     <CardItem style={{ backgroundColor: '#F2F2F270'}}>
-                        <Text style={themeTextStyle}>
+                        <Text style={{...themeTextStyle, fontFamily: 'Heiti SC',}}>
                             {item.theme}
                         </Text>
                     </CardItem>

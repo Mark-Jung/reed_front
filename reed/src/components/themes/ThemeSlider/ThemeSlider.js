@@ -37,13 +37,13 @@ const renderSlides = (themes, onThemePress) => {
         >
             <Card>
                 <CardItem header>
-                    <Text>
+                    <Text style={{fontFamily: 'Heiti SC',}}>
                         {item.release_time}
                     </Text>
                     <RNImage source={icon} style={themeIconStyle} />
                 </CardItem>
                 <CardItem>
-                    <Text style={themeTextStyle}>
+                    <Text style={{...themeTextStyle, fontFamily: 'Heiti SC',}}>
                         {item.theme}
                     </Text>
                 </CardItem>
@@ -58,13 +58,13 @@ const renderSlides = (themes, onThemePress) => {
         >
             <Card>
                 <CardItem header>
-                    <Text>
+                    <Text style={{fontFamily: 'Heiti SC',}}>
                         {item.release_time}
                     </Text>
                     <RNImage source={icon} style={themeIconStyle} />
                 </CardItem>
                 <CardItem>
-                    <Text style={themeTextStyle}>
+                    <Text style={{...themeTextStyle, fontFamily: 'Heiti SC',}}>
                         {item.theme_inspire}
                         {item.theme_author}
                     </Text>

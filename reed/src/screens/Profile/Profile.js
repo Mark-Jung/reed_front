@@ -70,12 +70,12 @@ class ProfileComponent extends Component {
                   style={{ backgroundColor: '#F2F2F270'}}
               >
                 <CardItem header style={{ backgroundColor: '#F2F2F270'}}>
-                {showAuthor ? <Text>{item.writer_username}</Text> : <View/>}
+                {showAuthor ? <Text style={{fontFamily: 'Heiti SC',}}>{item.writer_username}</Text> : <View/>}
 
                 </CardItem>
                 <CardItem style={{ backgroundColor: '#F2F2F270'}}>
                   
-                  <Text style={themeTextStyle}>
+                  <Text style={{...themeTextStyle, fontFamily: 'Heiti SC',}}>
                       {item.theme}
                   </Text>
                   
@@ -154,7 +154,7 @@ class ProfileComponent extends Component {
           <View
             style={nameStyle}
           >
-            <Text>
+            <Text style={{fontFamily: 'Heiti SC',}}>
               {username}
             </Text>
           </View>
@@ -165,7 +165,7 @@ class ProfileComponent extends Component {
         >
           <View>
             <Text
-              style={followNumberStyle}
+              style={{...followNumberStyle, fontFamily: 'Heiti SC',}}
             >
               {followed_by_count}
             </Text>
@@ -173,7 +173,7 @@ class ProfileComponent extends Component {
               style={followButtonStyle}
             >
               <Text
-                style={{fontSize: 11, color: 'black'}}
+                style={{fontFamily: 'Heiti SC', fontSize: 11, color: 'black'}}
               >
                 Subscribers
               </Text>
@@ -184,7 +184,7 @@ class ProfileComponent extends Component {
             style={{marginRight:35}}
           >
             <Text
-              style={followNumberStyle}
+              style={{...followNumberStyle, fontFamily: 'Heiti SC',}}
             >
               {following_count}
             </Text>
@@ -193,7 +193,7 @@ class ProfileComponent extends Component {
             >
               <Text
                 style={{
-                  fontSize: 11, color: 'black',
+                  fontSize: 11, color: 'black', fontFamily: 'Heiti SC',
                 }}
               >
                 Subscribed
@@ -208,7 +208,7 @@ class ProfileComponent extends Component {
   renderIntro(username, intro){
     return (
       <View>
-          <Text style={{marginLeft: 35}}>
+          <Text style={{marginLeft: 35, fontFamily: 'Heiti SC',}}>
             {intro}
           </Text>
       </View>
