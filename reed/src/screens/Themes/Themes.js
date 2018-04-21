@@ -15,7 +15,6 @@ import { NavigationActions } from 'react-navigation';
 import { View, Text, ScrollView, TouchableHighlight, Image, RefreshControl, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import styles from './styles';
-
 import icons from '../../resources/img/icons';
 import {
   load_all_themes,
@@ -62,16 +61,16 @@ class ThemesComponent extends Component {
       <View style={{
         backgroundColor: '#C0DBCB'
       }}>
-        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+        <View style={{flexDirection: 'row', marginBottom: 10}}>
           <Button
             onPress={this.props.toggle_show_closed}
-            style={show_closed ? {...buttonStyle, backgroundColor: '#DBEDD3', opacity: 0.4} : {...buttonStyle, backgroundColor: '#DBEDD3'} }
+            style={show_closed ? {...buttonStyle, backgroundColor: '#DBEDD3', opacity: 0.4, marginLeft: 105} : {...buttonStyle, backgroundColor: '#DBEDD3', marginLeft: 105} }
           >
             <Image source={icons.closed_mail} style={{width:20, height: 20}}/>
           </Button>
           <Button
             onPress={this.props.toggle_show_open}
-            style={show_open ?  {...buttonStyle, backgroundColor: '#DBEDD3', opacity: 0.4} : {...buttonStyle, backgroundColor: '#DBEDD3'}}
+            style={show_open ?  {...buttonStyle, backgroundColor: '#DBEDD3', opacity: 0.4, marginLeft: 75} : {...buttonStyle, backgroundColor: '#DBEDD3', marginLeft: 75}}
           >
             <Image source={icons.open_mail} style={{width:20, height: 20}}/>
           </Button>
@@ -90,6 +89,7 @@ class ThemesComponent extends Component {
       <View 
         style={{backgroundColor:'#C0DBCB'}}
       >
+        <Image source={icons.demoapp_typewriter} style={{width: 90, height: 90, alignSelf: 'center', paddingBottom: 0, marginBottom: 0}}/>
         {this.renderThemeTiles()}
       </View>
     );

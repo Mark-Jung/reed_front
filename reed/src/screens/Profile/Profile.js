@@ -16,6 +16,8 @@ import {
   Card,
   CardItem,
   Text,
+  Left,
+  Right,
 } from 'native-base';
 import styles from './styles';
 import { NavigationActions } from 'react-navigation';
@@ -143,74 +145,24 @@ class ProfileComponent extends Component {
     );
   }
 
-  renderFollowInfo(following_count, followed_by_count, username, uid) {
+  
+
+  renderIntro(intro, username){
+    console.log(intro + username)
     return (
       <View
-        style={{flexDirection: 'row'}}
+      style={{flexDirection: 'row', marginBottom: 10}}
       >
-        <View
-          style={nameContainerStyle}
-        >
-          <View
-            style={nameStyle}
-          >
-            <Text style={{fontFamily: 'Heiti SC',}}>
-              {username}
-            </Text>
-          </View>
-        </View>
+        <Left>
+          <Image source={icons.sun} style={{width: 40, height:40, marginLeft: 70}}/>
+        </Left>
 
-        <View
-          style={followInfoStyle}
-        >
-          <View>
-            <Text
-              style={{...followNumberStyle, fontFamily: 'Heiti SC',}}
-            >
-              {followed_by_count}
-            </Text>
-            <Button
-              style={followButtonStyle}
-            >
-              <Text
-                style={{fontFamily: 'Heiti SC', fontSize: 11, color: 'black'}}
-              >
-                Subscribers
-              </Text>
-            </Button>
-          </View>
-
-          <View
-            style={{marginRight:35}}
-          >
-            <Text
-              style={{...followNumberStyle, fontFamily: 'Heiti SC',}}
-            >
-              {following_count}
-            </Text>
-            <Button
-              style={{...followButtonStyle}}
-            >
-              <Text
-                style={{
-                  fontSize: 11, color: 'black', fontFamily: 'Heiti SC',
-                }}
-              >
-                Subscribed
-              </Text>
-            </Button>
-          </View>
-        </View>
-      </View>
-    );
-  }
-
-  renderIntro(username, intro){
-    return (
-      <View>
-          <Text style={{marginLeft: 35, fontFamily: 'Heiti SC',}}>
-            {intro}
-          </Text>
+        
+        <Text style={{fontFamily: 'Heiti SC', marginLeft: 200, alignSelf:"center", fontSize: 12, fontStyle:'italic'}}>
+          {username}'s words:
+          {'\n'}
+          {intro}
+        </Text>
       </View>
     );
   }
@@ -230,9 +182,8 @@ class ProfileComponent extends Component {
         <View
           style={upperStyle}
         >
-          {this.renderFollowInfo(following_count, followed_by_count, username, uid)}
+          {this.renderIntro(intro, username)}
         </View>
-        {this.renderIntro(username, intro)}
 
         {this.renderTabs()}
 
