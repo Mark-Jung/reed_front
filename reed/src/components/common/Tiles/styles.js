@@ -9,14 +9,19 @@ export default {
         justifyContent: 'center',
     },
     themeTextStyle:{
-        fontSize: 12,
-        textAlignVertical: "center",
-        textAlign: "center",
+        fontSize: 14,
+        alignSelf: 'center',
+        textAlign: 'center',
+        fontFamily: 'Heiti SC',
+        marginTop: -8,
+        flex: 1,
     },
     themeIconStyle: {
         width: 14,
         height: 14,
         alignItems: 'center',
+        
+
     },
     tileHeaderStyle: {
         flexDirection: "row", 

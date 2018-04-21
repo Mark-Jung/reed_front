@@ -89,7 +89,7 @@ class ThemesComponent extends Component {
       <View 
         style={{backgroundColor:'#C0DBCB'}}
       >
-        <Image source={icons.demoapp_typewriter} style={{width: 90, height: 90, alignSelf: 'center', paddingBottom: 0, marginBottom: 0}}/>
+        <Image source={icons.demoapp_typewriter} style={{width: 90, height: 90, alignSelf: 'center'}}/>
         {this.renderThemeTiles()}
       </View>
     );

@@ -26,7 +26,9 @@ import icons from '../../resources/img/icons'
 
 const {
   cardImageStyle,
-  cardHeader
+  cardHeaderStyle,
+  cardItemStyle,
+  savedImageStyle,
 } = styles;
 
 class CollectionComponent extends Component {
@@ -49,14 +51,17 @@ class CollectionComponent extends Component {
             style={cardImageStyle}
           >
             <CardItem
-              Header style={cardHeader}
+              Header style={cardHeaderStyle}
             >
-              <Image source={icons.bookmark}/>
-              <Text style={{fontFamily: 'Heiti SC',}}>
+              
+              <Image source={icons.bookmark} style={savedImageStyle}/>
+              <Text style={{fontFamily: 'Heiti SC', marginLeft: 10}}>
                 {post.writer_username} 
               </Text>
             </CardItem>
-            <CardItem>
+            <CardItem
+              style={cardItemStyle}
+            >
               <Text style={{fontFamily: 'Heiti SC',}}>
                 {post.content}
               </Text>
@@ -82,6 +87,7 @@ class CollectionComponent extends Component {
     const { theme } = this.props.navigation.state.params;
     const { theme_inspire, theme_author } = theme;
     // console.log(current_theme);
+    theme_author_phrase = 'by ' + theme_author;
     return (
       <ScrollView>
         <Card
@@ -89,20 +95,26 @@ class CollectionComponent extends Component {
           >
             <CardItem
               Header
+              style={cardHeaderStyle}
             >
-              <Icon/>
-              <Text style={{fontFamily: 'Heiti SC',}}>
+              <Image source={icons.bookmark} style={savedImageStyle}/>
+              <Text style={{fontFamily: 'Heiti SC', marginLeft: 10}}>
                 {theme.theme}
               </Text>
             </CardItem>
 
-            <CardItem>
-              <Text style={{fontFamily: 'Heiti SC',}}>
-                {theme_inspire}
-              </Text>
-              <Text>
-                {theme_author}
-              </Text>
+            <CardItem
+              style={cardItemStyle}
+            >
+              <View>
+                <Text style={{fontFamily: 'Heiti SC',}}>
+                  {theme_inspire}
+                  {'\n'}
+                </Text>
+                <Text style={{ alignSelf: 'center', fontStyle: 'italic', fontWeight: '100', }}>
+                  {theme_author_phrase}
+                </Text>
+              </View>
             </CardItem>
           </Card>
         {this.renderPost()}

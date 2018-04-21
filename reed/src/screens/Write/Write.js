@@ -59,7 +59,6 @@ class WriteComponent extends Component {
       if (!_.isEmpty(draft) || cur_draft === '') {
         var cur_draft_obj = (_.find(draft, function(obj) {return obj.theme === theme;}));
         cur_draft = typeof cur_draft_obj != 'undefined' ? cur_draft_obj.text : '';
-        // console.log("This is from extracting cur_draft: " + cur_draft);
       } 
       return (
         <View>
@@ -80,10 +79,6 @@ class WriteComponent extends Component {
                 });
                 Alert.alert("Message", "Successfully Posted!", [{text: 'OK', onPress: () => {this.props.navigation.dispatch(resetAction)}}], { cancelable: false });
                 
-                
-                // this.props.navigation.dispatch(NavigationActions.navigate({
-                //   routeName: 'Home',
-                // }));
               }}
             >
               <Text style={{fontFamily: 'Heiti SC',}}>

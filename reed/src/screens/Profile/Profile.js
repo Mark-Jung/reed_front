@@ -15,14 +15,13 @@ import {
   TabHeading,
   Card,
   CardItem,
-  Text,
   Left,
   Right,
 } from 'native-base';
 import styles from './styles';
 import { NavigationActions } from 'react-navigation';
 import _ from 'lodash';
-import { View, ListView, TouchableOpacity, Image, RefreshControl, Dimensions, ScrollView, } from 'react-native';
+import { View, Text, ListView, TouchableOpacity, Image, RefreshControl, Dimensions, ScrollView, } from 'react-native';
 import { connect } from 'react-redux';
 import icons from '../../resources/img/icons';
 const { width } = Dimensions.get("window");
@@ -49,8 +48,6 @@ const {
 class ProfileComponent extends Component {
   componentWillMount() {
     this.props.load_profile('mark');
-    // while(this.props.saved == 'na'){}
-    
   }
 
   renderTiles(source, onTilePress, showAuthor) {
@@ -154,12 +151,12 @@ class ProfileComponent extends Component {
       style={{flexDirection: 'row', marginBottom: 10}}
       >
         <Left>
-          <Image source={icons.sun} style={{width: 40, height:40, marginLeft: 70}}/>
+          <Image source={icons.user} style={{width: 70, height:70, marginLeft: 70}}/>
         </Left>
 
         
-        <Text style={{fontFamily: 'Heiti SC', marginLeft: 200, alignSelf:"center", fontSize: 12, fontStyle:'italic'}}>
-          {username}'s words:
+        <Text style={{marginLeft: 200, alignSelf:"center", fontSize: 12, fontStyle:'italic', fontWeight: '200', }}>
+          <Text style={{fontFamily: 'Heiti SC', }}> {username} </Text>
           {'\n'}
           {intro}
         </Text>

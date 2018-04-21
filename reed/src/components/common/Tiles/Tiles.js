@@ -38,7 +38,8 @@ const renderTiles = (themes, onTilePress) => {
         let day = dt.getDate();
         let year = dt.getFullYear() + '    ';
         let time = dt.getHours();
-        let month = all_months[month_num];
+        // let month = all_months[month_num];
+        let month = month_num;
     
         if (time === 6) {
             sunmoon = icons.sun;
@@ -59,19 +60,19 @@ const renderTiles = (themes, onTilePress) => {
                     style={{ backgroundColor: '#F2F2F270', marginHorizontal: 0,}}
                 >
                     <CardItem header style={{...tileHeaderStyle, backgroundColor: '#F2F2F270'}}>
-                        <Text style={{fontSize: 9, fontFamily: 'Heiti SC',}}>
-                            {month} {day} {year} <RNImage style={sunmoonStyle} source={sunmoon}/>
+                        <Text style={{fontSize: 9, fontFamily: 'Heiti SC', fontWeight: '300'}}>
+                        <RNImage source={icon} style={themeIconStyle} />  <RNImage style={sunmoonStyle} source={sunmoon}/>  {month}.{day}.{year}
                         </Text>
                         
                     </CardItem>
-                    <CardItem style={{ backgroundColor: '#F2F2F270'}}>
-                        <Text style={{...themeTextStyle, fontFamily: 'Heiti SC',}}>
+                    <CardItem style={{ backgroundColor: '#F2F2F270', alignContent: 'center', alignItems: 'center' }}>
+                        <Text style={themeTextStyle}>
                             {item.theme}
                         </Text>
                     </CardItem>
                     <CardItem footer style={{backgroundColor: '#F2F2F270', flex: 1}}>
                         
-                        <RNImage source={icon} style={themeIconStyle} />
+                        {/* <RNImage source={icon} style={themeIconStyle} /> */}
                         
                     </CardItem>
                 </Card>

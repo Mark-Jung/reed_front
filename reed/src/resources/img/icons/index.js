@@ -11,4 +11,5 @@ export default {
     bookmarked: require('./bookmarkEDD.png'),
     moon: require('./moon.png'),
     sun: require('./sun.png'),
+    user: require('./user.png'),
 };
