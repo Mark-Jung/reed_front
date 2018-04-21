@@ -28,7 +28,8 @@ const {
   slide2Style,
   inspireStyle,
   authorStyle,
-  logoStyle
+  logoStyle,
+  cardStyle
 } = styles;
 
 class HomeComponent extends Component {
@@ -42,12 +43,20 @@ class HomeComponent extends Component {
       <Swiper style={wrapperStyle} loop={false} activeDotColor={'#6FCD97'}>
         <View style={slide1Style}>
           <Image style={logoStyle} source={icons.demoapp_typewriter} style={{width: 90, height: 90}}/>
-          <Text style={{...themeStyle, fontFamily: 'Heiti SC',}}>{current_theme}</Text>
+          <View
+            style={cardStyle}
+          >
+            <Text style={{...themeStyle, fontFamily: 'Heiti SC',}}>{current_theme}</Text>
+          </View>
         </View>
         <View style={slide2Style}>
-           <Image style={logoStyle} source={icons.demoapp_typewriter} style={{width: 90, height: 90}}/>  
-          <Text style={{...inspireStyle, fontFamily: 'Heiti SC',}}>{current_theme_inspire}</Text>
-          <Text style={{...authorStyle, fontFamily: 'Heiti SC',}}>{current_theme_author}</Text>
+          <Image style={logoStyle} source={icons.demoapp_typewriter} style={{width: 90, height: 90}}/>  
+          <View
+            style={cardStyle}
+          >
+            <Text style={{...inspireStyle, fontFamily: 'Heiti SC',}}>{current_theme_inspire}</Text>
+            <Text style={{...authorStyle, fontFamily: 'Heiti SC',}}>{current_theme_author}</Text>
+          </View>
         </View>
       </Swiper>
     );

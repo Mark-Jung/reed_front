@@ -27,7 +27,7 @@ export default {
         fontSize: 24,
         color: 'black',
         alignSelf: 'center',
-        paddingTop: 200,
+        paddingTop: 170,
     },
     authorStyle: {
         fontWeight: '400',
@@ -37,7 +37,12 @@ export default {
     },
     logoStyle: {
         marginTop: -100,
-
     },
+    cardStyle: {
+        backgroundColor: '#fefaef',
+        width: Dimensions.get("window").width*0.8,
+        height: Dimensions.get("window").height*0.62,
+        borderRadius: 20,
+    }
 
 };
