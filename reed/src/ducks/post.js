@@ -15,6 +15,10 @@ export const SEND_POST = 'reed/post/SEND_POST';
 export const SEND_POST_FAILURE = 'reed/post/SEND_POST_FAILURE';
 export const SEND_POST_SUCCESS= 'reed/post/SEND_POST_SUCCESS';
 export const TEMP_SAVE = 'reed/post/TEMP_SAVE';
+export const SAVE_POST = 'reed/post/SAVE_POST';
+export const SAVE_POST_SUCCESS = 'reed/post/SAVE_POST_SUCCESS';
+export const SAVE_POST_FAILURE = 'reed/post/SAVE_POST_FAILURE';
+
 
 const INITIAL_STATE = { 
     postList: [],
@@ -68,6 +72,17 @@ export default function reducer(state = INITIAL_STATE, action) {
                 ...state,
                 error_message: ''
             }
+        case SAVE_POST:
+        case SAVE_POST_FAILURE:
+            return {
+                ...state,
+                error_message: action.payload
+            }
+        case SAVE_POST_SUCCESS:
+            return {
+                ...state,
+                error_message: ''
+            }
         default:
             return {
                 ...state,
@@ -76,6 +91,39 @@ export default function reducer(state = INITIAL_STATE, action) {
 }
 
 //Action Creators
+export const save_post = (pid, isSaved) => {
+    const url = `${postAPIRoot}/saved`;
+    var mode = isSaved ? 'delete' : 'append';
+    return (dispatch) => {
+        dispatch({
+            type: SAVE_POST
+        });
+        axios.put(url, {
+            'mode': mode,
+            'postid': pid
+        }, {
+            headers: {'Authorization': jwt_demo}
+        })
+          .then((response) => save_post_success(dispatch, response))
+          .catch((error) => save_post_failure(dispatch, error))
+    }
+}
+
+export const save_post_success = (dispatch, response) => {
+    console.log(response.data);
+    dispatch({
+        type: SAVE_POST_SUCCESS,
+        payload: response.data.response
+    });
+}
+
+export const save_post_failure = (dispatch, error) => {
+    dispatch({
+        type: SAVE_POST_SUCCESS,
+        payload: error,
+    });
+}
+
 export const load_post = (theme) => {
     const url = `${postAPIRoot}/postlist/theme/` + theme;
     return (dispatch) => {

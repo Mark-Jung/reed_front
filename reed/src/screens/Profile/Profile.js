@@ -48,6 +48,8 @@ const {
 class ProfileComponent extends Component {
   componentWillMount() {
     this.props.load_profile('mark');
+    this.forceUpdate();
+
   }
 
   renderTiles(source, onTilePress, showAuthor) {
@@ -62,24 +64,24 @@ class ProfileComponent extends Component {
               onPress={() => {
                   onTilePress(item);
               }}
-              style={{...slideImageStyle, width: size, height: size, marginHorizontal: margin, justifyContent:'center', alignContent: 'center'}}
+              style={{...slideImageStyle, width: size, height: size, marginHorizontal: margin, }}
               key={index}
           >
               <Card
-                  style={{ backgroundColor: '#F2F2F270'}}
+                  style={{ backgroundColor: '#F2F2F270', marginHorizontal: 0, }}
               >
                 <CardItem header style={{ backgroundColor: '#F2F2F270'}}>
                 {showAuthor ? <Text style={{fontFamily: 'Heiti SC',}}>{item.writer_username}</Text> : <View/>}
 
                 </CardItem>
-                <CardItem style={{ backgroundColor: '#F2F2F270'}}>
+                <CardItem style={{ backgroundColor: '#F2F2F270', alignContent: 'center', alignItems: 'center' }}>
                   
                   <Text style={{...themeTextStyle, fontFamily: 'Heiti SC',}}>
                       {item.theme}
                   </Text>
                   
                 </CardItem>
-                <CardItem footer style={{ backgroundColor: '#F2F2F270'}}>
+                <CardItem footer style={{ backgroundColor: '#F2F2F270', flex: 1,}}>
                   
                 </CardItem>
               </Card>
@@ -169,13 +171,15 @@ class ProfileComponent extends Component {
     if (this.props.saved != 'na' &&  _.isEmpty(this.props.saved_post)){
       this.props.load_saved(saved);
     }
-    console.log(saved_post);
-
+    
+    
     return (
       <View
         style={{backgroundColor: '#C5DACC', flex: 1}}
       >
+        
         <Image source={icons.demoapp_typewriter} style={{width: 90, height: 90, alignSelf: 'center'}}/>
+        
         <View
           style={upperStyle}
         >

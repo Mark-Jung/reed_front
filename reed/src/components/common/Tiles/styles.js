@@ -20,8 +20,6 @@ export default {
         width: 14,
         height: 14,
         alignItems: 'center',
-        
-
     },
     tileHeaderStyle: {
         flexDirection: "row", 

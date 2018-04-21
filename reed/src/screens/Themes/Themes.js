@@ -55,6 +55,8 @@ class ThemesComponent extends Component {
       sorted_themes = closed_themes;
     } else if (show_open) {
       sorted_themes = open_themes;
+    } else {
+      sorted_theme = themes;
     }
     // console.log(sorted_themes);
     return (
@@ -63,13 +65,13 @@ class ThemesComponent extends Component {
       }}>
         <View style={{flexDirection: 'row', marginBottom: 10}}>
           <Button
-            onPress={this.props.toggle_show_closed}
+            onPress={() => this.props.toggle_show_closed()}
             style={show_closed ? {...buttonStyle, backgroundColor: '#DBEDD3', opacity: 0.4, marginLeft: 105} : {...buttonStyle, backgroundColor: '#DBEDD3', marginLeft: 105} }
           >
             <Image source={icons.closed_mail} style={{width:20, height: 20}}/>
           </Button>
           <Button
-            onPress={this.props.toggle_show_open}
+            onPress={() => this.props.toggle_show_open()}
             style={show_open ?  {...buttonStyle, backgroundColor: '#DBEDD3', opacity: 0.4, marginLeft: 75} : {...buttonStyle, backgroundColor: '#DBEDD3', marginLeft: 75}}
           >
             <Image source={icons.open_mail} style={{width:20, height: 20}}/>

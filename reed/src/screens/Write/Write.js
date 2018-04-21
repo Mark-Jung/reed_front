@@ -10,7 +10,7 @@ import {
   Grid,
   Col,
   Row,
-  StyleProvider
+  StyleProvider,
 } from 'native-base';
 import { NavigationActions } from 'react-navigation';
 import { View, Text, ListView, TextInput, Image, Alert } from 'react-native';
@@ -62,10 +62,13 @@ class WriteComponent extends Component {
       } 
       return (
         <View>
+          
           <Input 
             onChangeText={(cur_draft) => {this.props.temp_save(cur_draft, theme);}}
             value={cur_draft}
           />
+           
+          
           <Right>
             <Button
               transparent

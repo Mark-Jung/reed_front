@@ -21,7 +21,11 @@ import _ from 'lodash';
 import styles from './styles';
 import {
   load_post,
+  save_post,
 } from '../../ducks/post';
+import {
+  load_saved,
+} from '../../ducks/profile';
 import icons from '../../resources/img/icons'
 
 const {
@@ -38,13 +42,19 @@ class CollectionComponent extends Component {
     this.props.load_post(theme.theme);
   }
 
+  
 
+  onSavedPress(pid, isSaved) {
+    
+    this.props.save_post(pid, isSaved);
+    this.props.load_saved(this.props.saved);
+  }
 
   renderPost() {
     const { postList, } = this.props;
     if (!_.isEmpty(postList)) {
       return _.map(postList, (post, index) => {
-        
+        var isSaved = post.isSaved;
         return (
           <Card
             key={index}
@@ -53,8 +63,12 @@ class CollectionComponent extends Component {
             <CardItem
               Header style={cardHeaderStyle}
             >
-              
-              <Image source={icons.bookmark} style={savedImageStyle}/>
+              <Button
+                style={{backgroundColor: 'white'}}
+                onPress={() => this.onSavedPress(post.id, post.isSaved)}
+              >
+                { isSaved ? <Image source={icons.bookmarked} style={savedImageStyle}/> : <Image source={icons.bookmark} style={savedImageStyle}/>}
+              </Button>
               <Text style={{fontFamily: 'Heiti SC', marginLeft: 10}}>
                 {post.writer_username} 
               </Text>
@@ -97,7 +111,6 @@ class CollectionComponent extends Component {
               Header
               style={cardHeaderStyle}
             >
-              <Image source={icons.bookmark} style={savedImageStyle}/>
               <Text style={{fontFamily: 'Heiti SC', marginLeft: 10}}>
                 {theme.theme}
               </Text>
@@ -154,9 +167,10 @@ class CollectionComponent extends Component {
 export { CollectionComponent };
 
 const mapStateToProps = (state, ownProps) => {
-  const { post, theme } = state;
+  const { post, theme, profile } = state;
   const { postList } = post;
   const { current_theme, current_theme_inspire, current_theme_author } = theme;
+  const { saved } = profile;
   // console.log(postList);
   return {
     ...ownProps,
@@ -164,9 +178,12 @@ const mapStateToProps = (state, ownProps) => {
     current_theme,
     current_theme_author,
     current_theme_inspire,
+    saved,
   };
 };
 
 export const Collection = connect(mapStateToProps, {
   load_post,   
+  save_post,
+  load_saved,
 })(CollectionComponent);

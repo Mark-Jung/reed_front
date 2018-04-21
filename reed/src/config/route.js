@@ -36,7 +36,7 @@ const MainTabRouteConfig = {
         tabBarIcon: ({ tintColor }) => (
           <Image
             source={icons.event}
-            style={[tabBarIconStyle, { tintColor }]}
+            style={[heartIconStyle, { tintColor }]}
           />
         ),
       }
@@ -62,7 +62,7 @@ const MainTabRouteConfig = {
         tabBarIcon: ({ tintColor }) => (
           <Image
             source={icons.profile}
-            style={[tabBarIconStyle, { tintColor }]}
+            style={[heartIconStyle, { tintColor }]}
           />
         ),
       }
