@@ -37,6 +37,7 @@ class PostComponent extends Component {
       <View
         style={{backgroundColor: '#C0DBCB', flex: 1}}
       >
+        
         <Card
           style={{...cardImageStyle, }}
         >
@@ -55,9 +56,8 @@ class PostComponent extends Component {
             </Text>
           </CardItem>
         </Card>
-
-
-
+        
+        
       </View>
     );
   }
